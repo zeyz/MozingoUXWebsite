@@ -1,182 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mozingo UX</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    html {
-      scroll-padding-top: 120px;
-    }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f9f9f9;
-      color: #1a1a1a;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #ffffff;
-      padding: 1.5rem 1rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav {
-      margin-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #1a1a1a;
-      font-weight: 600;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.75rem;
-    }
-    .section {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    .section h2, .section h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .section h2 {
-      color: #2c3e50;
-    }
-    .section h3 {
-      color: #34495e;
-    }
-    .section p {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .steps, .essentials {
-      padding-left: 1rem;
-    }
-    .steps li, .essentials li {
-      margin-bottom: 1rem;
-    }
-    form {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-    }
-    input, textarea {
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      background-color: #1a1a1a;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    button:hover {
-      background-color: #333;
-    }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mozingo UX — Simple, modern websites for small businesses</title>
+  <meta name="description" content="Mozingo UX designs fast, mobile‑first websites for small businesses. Get a free quote or browse recent work." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="/favicon.ico" />
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-      .section h2, .section h3 {
-        font-size: 1.25rem;
-      }
-      input, textarea, button {
-        font-size: 1rem;
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+          colors: {
+            brand: {
+              500: '#06b6d4',
+              600: '#0891b2',
+              700: '#0e7490'
+            },
+            accent: {
+              500: '#f59e0b'
+            }
+          }
+        }
       }
     }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .ph::before { content: ""; display:block; padding-top: 62%; background-size: cover; background-position: center; border-radius: 0.75rem; }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Mozingo UX</h1>
-    <p>Modern design. Seamless function.</p>
-    <nav>
-      <a href="#start">Start Here</a>
-      <a href="#work">Work With Us</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<body class="bg-white text-gray-900 antialiased">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-2 font-extrabold text-lg">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500 text-white">MU</span>
+          <span>Mozingo UX</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#work" class="hover:text-brand-700">Work</a>
+          <a href="#services" class="hover:text-brand-700">Services</a>
+          <a href="#about" class="hover:text-brand-700">About</a>
+          <a href="#contact" class="hover:text-brand-700">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="#quote" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700 transition">Get a Free Quote</a>
+          <a href="#work" class="inline-flex px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 transition">See My Work</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section class="section" id="start">
-    <h2>New to Websites? Start Here</h2>
-    <p>Getting your first website can feel overwhelming, but we make it easy.</p>
-    <p>Whether you're just starting a business or updating your online presence, Mozingo UX walks you through every step. You don’t need to know anything about hosting, domains, or tech stuff - that’s what we’re here for.</p>
-
-    <h3>Here’s How It Works</h3>
-    <ul class="steps">
-      <li><strong>1. We Help You Buy a Domain:</strong> Your domain is your website’s address (like yourbusiness.com). We’ll help you choose and register it, then it’s yours, fully owned.</li>
-      <li><strong>2. We Set Up Hosting:</strong> Hosting stores your website online. We help you select a trusted provider and handle the setup for you.</li>
-      <li><strong>3. You Stay in Control:</strong> Everything is registered in your name and email. You keep all ownership and access.</li>
-      <li><strong>4. We Design & Build:</strong> We start the design process once setup is complete, with your input along the way.</li>
-      <li><strong>5. We Launch & Handoff:</strong> We launch the site and give you all login credentials. You’re in full control from there.</li>
-    </ul>
-
-    <h3>Why This Matters</h3>
-    <p>Too many businesses lose access to their sites because someone else set it up and kept control. At Mozingo UX, we make sure <strong>you always stay in control</strong>. We just help you get there.</p>
-
-    <h3>Still Unsure? Let’s Chat.</h3>
-    <p>Have questions? Contact us anytime. We'll do our best to answer them.</p>
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-accent-50"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
+            Simple, modern websites for <span class="text-brand-700">small businesses</span>.
+          </h1>
+          <p class="mt-5 text-lg text-gray-600 max-w-xl">Fast, mobile‑first builds with clean UX and SEO foundations. No fluff — just effective sites that look great and convert.</p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#quote" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Get a Free Quote</a>
+            <a href="#work" class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 font-semibold">See My Work</a>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="Screenshot 2025-09-07 224647.png" alt="Portfolio example" class="rounded-xl shadow-xl" />
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="section" id="work">
-    <h2>Work With Us</h2>
-    <p>At Mozingo UX, we bring your vision to life with <strong>modern, responsive websites</strong> that look stunning on desktop, tablet, and mobile. Whether you're starting from scratch or refreshing an outdated site, we deliver clean, professional results - fast.</p>
-
-    <h3>What You’ll Get</h3>
-    <ul class="steps">
-      <li>Unlimited revisions until you're satisfied</li>
-      <li>Fully responsive and modern design</li>
-      <li>Built-in search engine optimization tools (Yoast SEO)</li>
-      <li>Security plugin for peace of mind</li>
-      <li>Mobile- and tablet-friendly (Google test approved)</li>
-    </ul>
-
-    <h3>What We’ll Generally Need to Know</h3>
-    <ul class="essentials">
-      <li>A short introduction to your business or project</li>
-      <li>Your slogan (if you've got one)</li>
-      <li>Your logo (any format is fine, we can convert)</li>
-      <li>Any images you'd like to include (if not, we’ll find quality alternatives)</li>
-      <li>A list of pages (think of them like sections of your website) and the content for each</li>
-      <li>Access to your domain and hosting account (we can help set this up if you need)</li>
-      <li>Example websites you love</li>
-      <li>Preferred colors and fonts (if any)</li>
-      <li>Your collaboration and feedback during development</li>
-    </ul>
-
-    <p><strong>Please Note:</strong> We do not build websites that involve religion, gambling, alcohol, or adult content.</p>
+  <!-- Work / Portfolio -->
+  <section id="work" class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight mb-6">My Work</h2>
+      <article class="group rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition bg-white max-w-xl">
+        <img src="Screenshot 2025-09-07 224647.png" alt="Central Heating and Air website" class="w-full" />
+        <div class="p-5">
+          <h3 class="font-semibold">Central Heating & Air Website</h3>
+          <p class="mt-1 text-sm text-gray-600">Redesigned for clarity, responsiveness, and professional branding.</p>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Ready to get started? Have a question? Fill out the form below and we’ll get back to you as soon as possible.</p>
-    <p><strong>Note:</strong> You don’t need to have everything figured out before reaching out. We’ll guide you through the next steps and gather details together.</p>
-    <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <!-- Services / Pricing -->
+  <section id="services" class="py-16 sm:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight">Services & Packages</h2>
+      <p class="mt-2 text-gray-600">Clear options for different needs. Custom quotes available.</p>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <!-- Starter Site -->
+        <div class="rounded-2xl border-2 border-brand-600 bg-white p-6 shadow-sm flex flex-col">
+          <div class="inline-flex self-start mb-2 px-2 py-1 text-xs rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-200">Most Popular</div>
+          <h3 class="text-xl font-semibold">Starter Site</h3>
+          <p class="mt-1 text-gray-600">Perfect for getting online fast.</p>
+          <p class="mt-4 text-3xl font-extrabold">$500</p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-700">
+            <li>• 1–3 pages</li>
+            <li>• Mobile‑first layout</li>
+            <li>• Contact form</li>
+            <li>• Basic SEO setup</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose Starter</a>
+        </div>
+
+        <!-- Business Site -->
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col">
+          <h3 class="text-xl font-semibold">Business Site</h3>
+          <p class="mt-1 text-gray-600">For growing teams that need more.</p>
+          <p class="mt-4 text-3xl font-extrabold">$1,000</p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-700">
+            <li>• Up to 10 pages</li>
+            <li>• Copy tweaks & SEO metadata</li>
+            <li>• Performance optimization</li>
+            <li>• Analytics & basic training</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose Business</a>
+        </div>
+
+        <!-- Custom UX -->
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col">
+          <h3 class="text-xl font-semibold">Custom UX</h3>
+          <p class="mt-1 text-gray-600">Unique needs, integrations, or redesigns.</p>
+          <p class="mt-4 text-3xl font-extrabold">Custom</p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-700">
+            <li>• Workshops & wireframes</li>
+            <li>• Design systems</li>
+            <li>• CMS & e‑commerce options</li>
+            <li>• Ongoing support</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Request Quote</a>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- About -->
+  <section id="about" class="py-16 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-center">
+      <div class="lg:col-span-2">
+        <h2 class="text-3xl font-bold tracking-tight">Hi, I’m Austin.</h2>
+        <p class="mt-3 text-gray-700">I help small businesses look professional online with clean, effective websites. With a background in IT and UX, I focus on clarity, speed, and results. Based in North Carolina, happily serving clients anywhere.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#quote" class="inline-flex px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Get a Free Quote</a>
+          <a href="#contact" class="inline-flex px-5 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 font-semibold">Contact</a>
+        </div>
+      </div>
+      <div class="ph shadow-xl"></div>
+    </div>
+  </section>
+
+  <!-- Quote / Contact Form -->
+  <section id="quote" class="py-16 sm:py-20 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight">Get a Free Quote</h2>
+      <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST" class="mt-8 grid grid-cols-1 gap-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-sm font-medium">Name</span>
+            <input name="name" required class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium">Email</span>
+            <input type="email" name="email" required class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" />
+          </label>
+        </div>
+        <label class="block">
+          <span class="text-sm font-medium">Business / Website (optional)</span>
+          <input name="website" placeholder="example.com" class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium">Project Details</span>
+          <textarea name="message" rows="5" required class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Tell me what you need…"></textarea>
+        </label>
+        <button type="submit" class="mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Send Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact block -->
+  <section id="contact" class="py-10 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl bg-gray-50 border border-gray-200 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <h3 class="text-xl font-semibold">Prefer email?</h3>
+          <p class="text-gray-600">Reach me directly at <a class="text-brand-700 underline" href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a></p>
+        </div>
+        <a href="#quote" class="inline-flex px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Start a Free Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-gray-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-600">© <span id="year"></span> Mozingo UX. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
