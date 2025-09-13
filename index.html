@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mozingo UX — Simple, modern websites for small businesses</title>
-  <meta name="description" content="Mozingo UX designs fast, mobile‑first websites for small businesses. Get a free quote or browse recent work." />
+  <meta name="description" content="Mozingo UX designs fast, mobile-first websites for small businesses. Get a free quote or browse recent work." />
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="icon" href="/favicon.ico" />
 
@@ -21,14 +21,8 @@
         extend: {
           fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
           colors: {
-            brand: {
-              500: '#06b6d4',
-              600: '#0891b2',
-              700: '#0e7490'
-            },
-            accent: {
-              500: '#f59e0b'
-            }
+            brand: { 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490' },
+            accent: { 500: '#f59e0b' }
           }
         }
       }
@@ -72,7 +66,7 @@
           <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
             Simple, modern websites for <span class="text-brand-700">small businesses</span>.
           </h1>
-          <p class="mt-5 text-lg text-gray-600 max-w-xl">Fast, mobile‑first builds with clean UX and SEO foundations. No fluff — just effective sites that look great and convert.</p>
+          <p class="mt-5 text-lg text-gray-600 max-w-xl">Fast, mobile-first builds with clean UX and SEO foundations. No fluff — just effective sites that look great and convert.</p>
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a href="#quote" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Get a Free Quote</a>
             <a href="#work" class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 font-semibold">See My Work</a>
@@ -89,7 +83,7 @@
               <p class="text-sm text-gray-600">Typical delivery for Starter sites</p>
             </div>
             <div class="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur p-5">
-              <div class="text-3xl font-extrabold text-brand-700">Mobile‑first</div>
+              <div class="text-3xl font-extrabold text-brand-700">Mobile-first</div>
               <p class="text-sm text-gray-600">Built for speed & SEO</p>
             </div>
             <div class="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur p-5">
@@ -106,64 +100,70 @@
   <section id="work" class="py-16 sm:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-bold tracking-tight mb-6">My Work</h2>
-      <article class="group rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition bg-white max-w-xl">
-        <img src="hvac-site.jpg?v=1" alt="Central Heating and Air website" class="w-full" loading="lazy" />
-        <div class="p-5">
-          <h3 class="font-semibold"> <a href="https://central-hac.com" target="_blank" rel="noopener noreferrer"> Central Heating & Air Website </a></h3>
-          <p class="mt-1 text-sm text-gray-600">Redesigned for clarity, responsiveness, and professional branding.</p>
-        </div>
-      </article>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Central Heating & Air -->
+        <article class="group rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition bg-white">
+          <img src="hvac-site.jpg?v=1" alt="Central Heating and Air website" class="w-full" loading="lazy" />
+          <div class="p-5">
+            <h3 class="font-semibold">
+              <a href="https://central-hac.com" target="_blank" rel="noopener noreferrer">
+                Central Heating &amp; Air Website
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-gray-600">Redesigned for clarity, responsiveness, and professional branding.</p>
+          </div>
+        </article>
+
+        <!-- JKM Drafting & Design -->
+        <article class="group rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition bg-white">
+          <img src="jkm-site.jpg" alt="JKM Drafting &amp; Design website" class="w-full" loading="lazy" />
+          <div class="p-5">
+            <h3 class="font-semibold">
+              <a href="https://jkmdrafting.com" target="_blank" rel="noopener noreferrer">
+                JKM Drafting &amp; Design Website
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-gray-600">Initial one-page site to establish web presence and drive inquiries.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- Services / Pricing -->
   <section id="services" class="py-16 sm:py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold tracking-tight">Services & Packages</h2>
+      <h2 class="text-3xl font-bold tracking-tight">Services &amp; Packages</h2>
       <p class="mt-2 text-gray-600">Clear options for different needs. Custom quotes available.</p>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <!-- Starter Site -->
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <!-- Basic Site -->
         <div class="rounded-2xl border-2 border-brand-600 bg-white p-6 shadow-sm flex flex-col">
-          <div class="inline-flex self-start mb-2 px-2 py-1 text-xs rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-200">Most Popular</div>
-          <h3 class="text-xl font-semibold">Starter Site</h3>
+          <h3 class="text-xl font-semibold">Basic Site</h3>
           <p class="mt-1 text-gray-600">Perfect for getting online fast.</p>
           <p class="mt-4 text-3xl font-extrabold">$500</p>
           <ul class="mt-4 space-y-2 text-sm text-gray-700">
             <li>• 1–3 pages</li>
-            <li>• Mobile‑first layout</li>
+            <li>• Mobile-first layout</li>
             <li>• Contact form</li>
             <li>• Basic SEO setup</li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose Starter</a>
+          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose Basic</a>
         </div>
 
-        <!-- Business Site -->
+        <!-- Custom Site -->
         <div class="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col">
-          <h3 class="text-xl font-semibold">Business Site</h3>
-          <p class="mt-1 text-gray-600">For growing teams that need more.</p>
-          <p class="mt-4 text-3xl font-extrabold">$1,000</p>
-          <ul class="mt-4 space-y-2 text-sm text-gray-700">
-            <li>• Up to 10 pages</li>
-            <li>• Copy tweaks & SEO metadata</li>
-            <li>• Performance optimization</li>
-            <li>• Analytics & basic training</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose Business</a>
-        </div>
-
-        <!-- Custom UX -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col">
-          <h3 class="text-xl font-semibold">Custom UX</h3>
+          <h3 class="text-xl font-semibold">Custom Site</h3>
           <p class="mt-1 text-gray-600">Unique needs, integrations, or redesigns.</p>
-          <p class="mt-4 text-3xl font-extrabold">Custom</p>
+          <p class="mt-4 text-3xl font-extrabold">Case by case</p>
           <ul class="mt-4 space-y-2 text-sm text-gray-700">
-            <li>• Workshops & wireframes</li>
+            <li>• Workshops &amp; wireframes</li>
             <li>• Design systems</li>
-            <li>• CMS & e‑commerce options</li>
+            <li>• CMS &amp; e-commerce options</li>
             <li>• Ongoing support</li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Request Quote</a>
+          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Get a Custom Quote</a>
         </div>
       </div>
     </div>
