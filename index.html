@@ -3,234 +3,974 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mozingo UX — Simple, modern websites for small businesses</title>
-  <meta name="description" content="Mozingo UX designs fast, mobile-first websites for small businesses. Get a free quote or browse recent work." />
-  <meta name="theme-color" content="#0ea5e9" />
+  <title>Mozingo UX — Practical websites for local small businesses</title>
+  <meta name="description" content="Mozingo UX builds clean, practical websites for small businesses, contractors, and local organizations that need to look professional online without a big agency process." />
+  <meta name="theme-color" content="#12324a" />
   <link rel="icon" href="/favicon.ico" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
-          colors: {
-            brand: { 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490' },
-            accent: { 500: '#f59e0b' }
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
+    :root {
+      --ink: #10202f;
+      --ink-2: #17324a;
+      --muted: #607083;
+      --soft: #f6f3ed;
+      --paper: #fffdf9;
+      --line: #ded8ce;
+      --teal: #0e7490;
+      --teal-dark: #155e75;
+      --gold: #d99221;
+      --white: #ffffff;
+      --shadow: 0 24px 60px rgba(16, 32, 47, 0.12);
+      --radius: 22px;
+      --max: 1160px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    .ph::before { content: ""; display:block; padding-top: 62%; background-size: cover; background-position: center; border-radius: 0.75rem; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    img, iframe { max-width: 100%; }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 999px;
+      z-index: 100;
+    }
+    .skip-link:focus { left: 10px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 253, 249, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(222, 216, 206, 0.82);
+    }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: 72px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--teal), var(--ink-2));
+      color: var(--white);
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.82rem;
+      box-shadow: 0 12px 30px rgba(14, 116, 144, 0.22);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.91rem;
+      font-weight: 650;
+      color: var(--muted);
+    }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 750;
+      font-size: 0.94rem;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      box-shadow: 0 16px 34px rgba(14, 116, 144, 0.22);
+    }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary {
+      background: var(--white);
+      border-color: var(--line);
+      color: var(--ink);
+    }
+    .btn-secondary:hover { border-color: rgba(16, 32, 47, 0.28); box-shadow: 0 12px 28px rgba(16, 32, 47, 0.08); }
+    .btn-dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .btn-dark:hover { background: var(--ink-2); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(14, 116, 144, 0.14), transparent 32%),
+        radial-gradient(circle at 82% 20%, rgba(217, 146, 33, 0.14), transparent 30%),
+        linear-gradient(180deg, #fffdf9 0%, #f7f2e9 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12% -220px -12%;
+      height: 340px;
+      background: var(--ink);
+      transform: rotate(-2.5deg);
+      transform-origin: center;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 88px 22px 130px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+      gap: 58px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(14, 116, 144, 0.2);
+      background: rgba(255, 255, 255, 0.62);
+      border-radius: 999px;
+      color: var(--teal-dark);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin: 18px 0 18px;
+      max-width: 760px;
+      font-size: clamp(2.7rem, 6vw, 5.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      font-weight: 850;
+    }
+    .hero-copy {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: clamp(1.03rem, 2vw, 1.18rem);
+    }
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .hero-note strong { color: var(--ink); }
+
+    .cred-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(222, 216, 206, 0.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cred-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(14, 116, 144, 0.08), transparent 42%);
+      pointer-events: none;
+    }
+    .cred-card > * { position: relative; }
+    .cred-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .cred-title {
+      font-weight: 850;
+      letter-spacing: -0.035em;
+      font-size: 1.35rem;
+      line-height: 1.16;
+      margin-bottom: 6px;
+    }
+    .cred-sub { color: var(--muted); font-size: 0.93rem; margin-bottom: 0; }
+    .status {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(14, 116, 144, 0.1);
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .mini {
+      background: rgba(255, 253, 249, 0.78);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .mini strong { display: block; font-size: 0.97rem; }
+    .mini span { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+    .card-divider { height: 1px; background: var(--line); margin: 20px 0; }
+    .small-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .small-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(14, 116, 144, 0.12);
+      color: var(--teal-dark);
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .section {
+      padding: 88px 22px;
+    }
+    .section-dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .section-muted { background: var(--soft); }
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+    .section-kicker {
+      color: var(--teal-dark);
+      font-weight: 850;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-dark .section-kicker { color: #7dd3fc; }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      letter-spacing: -0.055em;
+      margin-bottom: 12px;
+      font-weight: 850;
+    }
+    .section-text {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 680px;
+      margin-bottom: 0;
+    }
+    .section-dark .section-text { color: rgba(255, 255, 255, 0.68); }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .fit-card, .service-card, .process-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .fit-card h3, .service-card h3, .process-card h3 { margin-bottom: 8px; font-size: 1.08rem; letter-spacing: -0.02em; }
+    .fit-card p, .service-card p, .process-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0; }
+    .fit-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: var(--teal-dark);
+      background: rgba(14, 116, 144, 0.1);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .work-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    .work-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+    }
+    .work-tag {
+      display: inline-flex;
+      align-self: flex-start;
+      border: 1px solid rgba(125, 211, 252, 0.32);
+      background: rgba(125, 211, 252, 0.1);
+      color: #bdefff;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .work-card h3 {
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin-bottom: 12px;
+    }
+    .work-card p { color: rgba(255, 255, 255, 0.7); }
+    .work-list {
+      margin: 18px 0 26px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.95rem;
+    }
+    .work-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 8px;
+    }
+    .work-list li::before {
+      content: "→";
+      color: #7dd3fc;
+      font-weight: 900;
+    }
+    .work-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
+    .preview-shell {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: #0a1722;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .browser-bar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.32);
+    }
+    .url-pill {
+      margin-left: 8px;
+      flex: 1;
+      min-width: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.66);
+      font-size: 0.78rem;
+      padding: 5px 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .iframe-wrap {
+      position: relative;
+      flex: 1;
+      min-height: 520px;
+      background: var(--white);
+    }
+    .iframe-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      transform-origin: 0 0;
+      background: var(--white);
+    }
+    .preview-note {
+      padding: 10px 14px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.78rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.11);
+      margin: 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .service-card.featured {
+      border-color: rgba(14, 116, 144, 0.32);
+      box-shadow: 0 20px 50px rgba(16, 32, 47, 0.08);
+      position: relative;
+    }
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 18px 0 16px;
+    }
+    .price strong {
+      font-size: 2.2rem;
+      letter-spacing: -0.055em;
+    }
+    .price span { color: var(--muted); font-size: 0.93rem; }
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+    .service-card li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 8px;
+    }
+    .service-card li::before {
+      content: "✓";
+      color: var(--teal-dark);
+      font-weight: 900;
+    }
+    .scope-note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      background: rgba(217, 146, 33, 0.12);
+      border: 1px solid rgba(217, 146, 33, 0.24);
+      border-radius: 18px;
+      color: #6f4b13;
+      font-size: 0.93rem;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      counter-reset: steps;
+    }
+    .process-card {
+      counter-increment: steps;
+      position: relative;
+    }
+    .process-card::before {
+      content: counter(steps, decimal-leading-zero);
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      align-items: center;
+      justify-content: center;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 850;
+      margin-bottom: 16px;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .about-copy, .about-aside {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .about-copy p { color: var(--muted); margin-bottom: 16px; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-aside {
+      background: var(--ink);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .about-aside p { color: rgba(255, 255, 255, 0.68); margin-bottom: 0; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 30px;
+      align-items: start;
+    }
+    .contact-card, .form-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 18px 44px rgba(16, 32, 47, 0.06);
+    }
+    .contact-card p { color: var(--muted); }
+    .contact-methods {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      text-decoration: none;
+    }
+    .contact-method:hover { border-color: rgba(14, 116, 144, 0.32); }
+    .method-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(14, 116, 144, 0.1);
+      color: var(--teal-dark);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+    .contact-method strong { display: block; font-size: 0.92rem; }
+    .contact-method span { display: block; color: var(--muted); font-size: 0.88rem; }
+
+    form { display: grid; gap: 15px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    label { display: grid; gap: 7px; font-weight: 750; font-size: 0.9rem; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      min-height: 48px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--ink);
+      background: #fffdf9;
+      outline: none;
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(14, 116, 144, 0.68);
+      box-shadow: 0 0 0 4px rgba(14, 116, 144, 0.12);
+    }
+    .form-help { color: var(--muted); font-size: 0.88rem; margin: -4px 0 0; }
+    button.btn { width: 100%; }
+
+    .footer {
+      padding: 34px 22px;
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.9rem;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer a { color: rgba(255, 255, 255, 0.82); text-decoration: none; }
+    .footer a:hover { color: var(--white); }
+
+    @media (max-width: 980px) {
+      .hero-inner, .work-wrap, .about-panel, .contact-grid { grid-template-columns: 1fr; }
+      .hero-inner { padding-bottom: 100px; }
+      .fit-grid, .services-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .iframe-wrap { min-height: 440px; }
+    }
+    @media (max-width: 760px) {
+      .nav { min-height: 66px; }
+      .nav-links { display: none; }
+      .nav-actions .btn-secondary { display: none; }
+      .hero-inner { padding: 62px 18px 92px; }
+      .section { padding: 66px 18px; }
+      .fit-grid, .services-grid, .process-grid, .mini-grid, .form-row { grid-template-columns: 1fr; }
+      .cred-top { flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#home" class="flex items-center gap-2 font-extrabold text-lg">
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500 text-white">MU</span>
-          <span>Mozingo UX</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-          <a href="#work" class="hover:text-brand-700">Work</a>
-          <a href="#services" class="hover:text-brand-700">Services</a>
-          <a href="#about" class="hover:text-brand-700">About</a>
-          <a href="#contact" class="hover:text-brand-700">Contact</a>
-        </nav>
-        <div class="flex items-center gap-2">
-          <a href="#quote" class="hidden sm:inline-flex px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700 transition">Get a Free Quote</a>
-          <a href="#work" class="inline-flex px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 transition">See My Work</a>
-        </div>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Site header">
+    <div class="nav">
+      <a class="brand" href="#home" aria-label="Mozingo UX home">
+        <span class="brand-mark">MU</span>
+        <span>Mozingo UX</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="#work">View work</a>
+        <a class="btn btn-primary" href="#contact">Start a project</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-accent-50"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="hero-inner">
         <div>
-          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
-            Simple, modern websites for <span class="text-brand-700">small businesses</span>.
-          </h1>
-          <p class="mt-5 text-lg text-gray-600 max-w-xl">Fast, mobile-first builds with clean UX and SEO foundations. No fluff — just effective sites that look great and convert.</p>
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#quote" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Get a Free Quote</a>
-            <a href="#work" class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 font-semibold">See My Work</a>
+          <span class="eyebrow">Small-business web design</span>
+          <h1>Practical websites for local businesses that need to look credible online.</h1>
+          <p class="hero-copy">I build clean, mobile-friendly websites for small businesses, contractors, and local organizations that need a professional web presence without a bloated agency process.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Tell me about your project</a>
+            <a class="btn btn-secondary" href="#work">See the featured build</a>
           </div>
+          <p class="hero-note"><strong>Built by Austin Mozingo in Eastern North Carolina.</strong> Straightforward scope, clear communication, and honest recommendations.</p>
         </div>
-        <div class="relative">
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div class="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur p-5">
-              <div class="text-3xl font-extrabold text-brand-700">95+</div>
-              <p class="text-sm text-gray-600">Lighthouse Performance on recent builds</p>
+
+        <aside class="cred-card" aria-label="What Mozingo UX focuses on">
+          <div class="cred-top">
+            <div>
+              <p class="cred-title">A small, focused web studio for practical business sites.</p>
+              <p class="cred-sub">Not a big agency. Not a template dump. Just clean web work built around what your customers actually need to find.</p>
             </div>
-            <div class="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur p-5">
-              <div class="text-3xl font-extrabold text-brand-700">1–2 wks</div>
-              <p class="text-sm text-gray-600">Typical delivery for Starter sites</p>
-            </div>
-            <div class="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur p-5">
-              <div class="text-3xl font-extrabold text-brand-700">Mobile-first</div>
-              <p class="text-sm text-gray-600">Built for speed & SEO</p>
-            </div>
-            <div class="rounded-2xl border border-gray-200 bg-white/80 backdrop-blur p-5">
-              <div class="text-3xl font-extrabold text-brand-700">Flat $500</div>
-              <p class="text-sm text-gray-600">Most popular Starter plan</p>
-            </div>
+            <span class="status">Taking projects</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work / Portfolio -->
-  <section id="work" class="py-16 sm:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold tracking-tight mb-6">My Work</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- Central Heating & Air -->
-        <article class="group rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition bg-white">
-          <img src="hvac-site.jpg?v=1" alt="Central Heating and Air website" class="w-full" loading="lazy" />
-          <div class="p-5">
-            <h3 class="font-semibold">
-              <a href="https://central-hac.com" target="_blank" rel="noopener noreferrer">
-                Central Heating &amp; Air Website
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-600">Redesigned for clarity, responsiveness, and professional branding.</p>
+          <div class="mini-grid">
+            <div class="mini"><strong>Starter sites</strong><span>Simple, professional web presence.</span></div>
+            <div class="mini"><strong>Redesigns</strong><span>Replace outdated or unclear pages.</span></div>
+            <div class="mini"><strong>Launch help</strong><span>Domain, hosting, forms, and setup.</span></div>
+            <div class="mini"><strong>Local focus</strong><span>Trades, service businesses, nonprofits.</span></div>
           </div>
-        </article>
-
-        <!-- JKM Drafting & Design -->
-        <article class="group rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition bg-white">
-          <img src="jkm-site.jpg" alt="JKM Drafting &amp; Design website" class="w-full" loading="lazy" />
-          <div class="p-5">
-            <h3 class="font-semibold">
-              <a href="https://jkmdrafting.com" target="_blank" rel="noopener noreferrer">
-                JKM Drafting &amp; Design Website
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-600">Initial one-page site to establish web presence and drive inquiries.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services / Pricing -->
-  <section id="services" class="py-16 sm:py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold tracking-tight">Services &amp; Packages</h2>
-      <p class="mt-2 text-gray-600">Clear options for different needs. Custom quotes available.</p>
-
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <!-- Basic Site -->
-        <div class="rounded-2xl border-2 border-brand-600 bg-white p-6 shadow-sm flex flex-col">
-          <h3 class="text-xl font-semibold">Basic Site</h3>
-          <p class="mt-1 text-gray-600">Perfect for getting online fast.</p>
-          <p class="mt-4 text-3xl font-extrabold">$500</p>
-          <ul class="mt-4 space-y-2 text-sm text-gray-700">
-            <li>• 1–3 pages</li>
-            <li>• Mobile-first layout</li>
-            <li>• Contact form</li>
-            <li>• Basic SEO setup</li>
+          <div class="card-divider"></div>
+          <ul class="small-list">
+            <li><span class="check">✓</span><span>Clear pages that explain who you are, what you do, and how to reach you.</span></li>
+            <li><span class="check">✓</span><span>Mobile-friendly layouts built for real customers, not design awards.</span></li>
+            <li><span class="check">✓</span><span>Honest scope: if I’m not the right fit, I’ll say so.</span></li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose Basic</a>
-        </div>
+        </aside>
+      </div>
+    </section>
 
-        <!-- Custom Site -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col">
-          <h3 class="text-xl font-semibold">Custom Site</h3>
-          <p class="mt-1 text-gray-600">Unique needs, integrations, or redesigns.</p>
-          <p class="mt-4 text-3xl font-extrabold">Case by case</p>
-          <ul class="mt-4 space-y-2 text-sm text-gray-700">
-            <li>• Workshops &amp; wireframes</li>
-            <li>• Design systems</li>
-            <li>• CMS &amp; e-commerce options</li>
-            <li>• Ongoing support</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex justify-center px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Get a Custom Quote</a>
+    <section class="section section-muted" aria-labelledby="fit-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Good fit</p>
+          <h2 id="fit-title" class="section-title">Built for businesses that need useful, not overcomplicated.</h2>
+          <p class="section-text">Most small businesses do not need a giant web project. They need a site that looks trustworthy, works on phones, makes their services easy to understand, and gives people a clear way to contact them.</p>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card">
+            <div class="fit-icon">01</div>
+            <h3>Your current site feels outdated</h3>
+            <p>You have something online, but it no longer reflects the quality of the business behind it.</p>
+          </article>
+          <article class="fit-card">
+            <div class="fit-icon">02</div>
+            <h3>You need a simple web presence</h3>
+            <p>You want a professional place to send customers, vendors, churches, donors, or local partners.</p>
+          </article>
+          <article class="fit-card">
+            <div class="fit-icon">03</div>
+            <h3>You want help getting it live</h3>
+            <p>Domain, hosting, forms, email links, and launch details can be part of the process.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="py-16 sm:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-center">
-      <div class="lg:col-span-2">
-        <h2 class="text-3xl font-bold tracking-tight">Hi, I’m Austin.</h2>
-        <p class="mt-3 text-gray-700">I help small businesses look professional online with clean, effective websites. With a background in IT and UX, I focus on clarity, speed, and results. Based in North Carolina, happily serving clients anywhere.</p>
-        <div class="mt-6 flex gap-3">
-          <a href="#quote" class="inline-flex px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Get a Free Quote</a>
-          <a href="#contact" class="inline-flex px-5 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 font-semibold">Contact</a>
+    <section id="work" class="section section-dark" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Featured work</p>
+          <h2 id="work-title" class="section-title">One active project, shown clearly.</h2>
+          <p class="section-text">My portfolio is intentionally small right now. Rather than padding it with inactive links, I’m highlighting a real, live business website and what it was built to accomplish.</p>
+        </div>
+
+        <div class="work-wrap">
+          <article class="work-card">
+            <span class="work-tag">Live website</span>
+            <h3>Central Heating &amp; Air Conditioning of Kinston</h3>
+            <p>A redesigned website for an established Eastern North Carolina HVAC and mechanical contractor. The goal was a cleaner, more credible web presence that quickly communicates experience, services, service area, and contact options.</p>
+            <ul class="work-list">
+              <li>Positioned the company around commercial HVAC, mechanical contracting, service, and in-house sheet metal fabrication.</li>
+              <li>Created a simpler structure with Home, About, and Contact instead of unnecessary extra pages.</li>
+              <li>Focused calls to action around phone and office contact instead of vague quote funnels.</li>
+              <li>Made the site easier for general contractors, owners, and service customers to understand quickly.</li>
+            </ul>
+            <div class="work-actions">
+              <a class="btn btn-primary" href="https://central-hac.com" target="_blank" rel="noopener noreferrer">Open live site</a>
+              <a class="btn btn-secondary" href="#contact">Ask about a similar site</a>
+            </div>
+          </article>
+
+          <div class="preview-shell" aria-label="Live preview of Central HAC website">
+            <div class="browser-bar" aria-hidden="true">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="url-pill">central-hac.com</span>
+            </div>
+            <div class="iframe-wrap">
+              <iframe src="https://central-hac.com" title="Live preview of Central Heating and Air website" loading="lazy"></iframe>
+            </div>
+            <p class="preview-note">This panel attempts to load the live site directly. If a browser blocks the embedded preview, the button above still opens the project in a new tab.</p>
+          </div>
         </div>
       </div>
-      
-    </div>
-  </section>
+    </section>
 
-  <!-- Quote / Contact Form -->
-  <section id="quote" class="py-16 sm:py-20 bg-gray-50">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold tracking-tight">Get a Free Quote</h2>
-      <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST" class="mt-8 grid grid-cols-1 gap-4">
-        <div class="grid sm:grid-cols-2 gap-4">
-          <label class="block">
-            <span class="text-sm font-medium">Name</span>
-            <input name="name" required class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" />
-          </label>
-          <label class="block">
-            <span class="text-sm font-medium">Email</span>
-            <input type="email" name="email" required class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" />
-          </label>
+    <section id="services" class="section section-muted" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Services</p>
+          <h2 id="services-title" class="section-title">Simple options, scoped honestly.</h2>
+          <p class="section-text">I’m best suited for straightforward websites, clean redesigns, and small-business web cleanup. Larger apps, complex e-commerce, and advanced custom systems may be better handled by a larger team.</p>
         </div>
-        <label class="block">
-          <span class="text-sm font-medium">Business / Website (optional)</span>
-          <input name="website" placeholder="example.com" class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" />
-        </label>
-        <label class="block">
-          <span class="text-sm font-medium">Project Details</span>
-          <textarea name="message" rows="5" required class="mt-1 w-full rounded-xl border-gray-300 focus:border-brand-600 focus:ring-brand-600" placeholder="Tell me what you need…"></textarea>
-        </label>
-        <button type="submit" class="mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Send Request</button>
-      </form>
-    </div>
-  </section>
 
-  <!-- Contact block -->
-  <section id="contact" class="py-10 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl bg-gray-50 border border-gray-200 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div>
-          <h3 class="text-xl font-semibold">Prefer email?</h3>
-          <p class="text-gray-600">Reach me directly at <a class="text-brand-700 underline" href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a></p>
+        <div class="services-grid">
+          <article class="service-card featured">
+            <h3>Starter Website</h3>
+            <p>For a business that needs a clean, professional site without turning it into a huge project.</p>
+            <div class="price"><strong>from $500</strong><span>depending on scope</span></div>
+            <ul>
+              <li>1–3 page static website</li>
+              <li>Mobile-friendly design</li>
+              <li>Content organization and basic copy cleanup</li>
+              <li>Contact form or direct email/phone CTA</li>
+              <li>Basic search and launch setup</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <h3>Website Refresh</h3>
+            <p>For existing sites that look dated, feel confusing, or no longer match the business.</p>
+            <ul>
+              <li>Cleaner layout and visual direction</li>
+              <li>Service and contact flow improvements</li>
+              <li>Mobile usability cleanup</li>
+              <li>Better calls to action</li>
+              <li>Launch support when ready</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <h3>Web Setup &amp; Cleanup</h3>
+            <p>For the behind-the-scenes web details that often slow small businesses down.</p>
+            <ul>
+              <li>Domain and hosting guidance</li>
+              <li>Contact form setup</li>
+              <li>Email and link cleanup</li>
+              <li>Basic analytics/search setup</li>
+              <li>Small fixes and practical recommendations</li>
+            </ul>
+          </article>
         </div>
-        <a href="#quote" class="inline-flex px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700 font-semibold">Start a Free Quote</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="py-10 border-t border-gray-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-gray-600">© <span id="year"></span> Mozingo UX. All rights reserved.</p>
+        <p class="scope-note"><strong>A note on scope:</strong> I keep the offer intentionally realistic. If your project needs advanced booking systems, custom software, large e-commerce, or a full marketing team, I’ll be upfront about whether I can help or whether you need a different partner.</p>
       </div>
+    </section>
+
+    <section id="process" class="section" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Process</p>
+          <h2 id="process-title" class="section-title">A straightforward path from idea to live site.</h2>
+          <p class="section-text">The goal is to make the process feel manageable, especially if you have never hired someone for a website before.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card">
+            <h3>Talk through the need</h3>
+            <p>We identify what the site needs to say, who it is for, and what action visitors should take.</p>
+          </article>
+          <article class="process-card">
+            <h3>Shape the content</h3>
+            <p>I help organize the pages, sections, wording, and contact flow before design takes over.</p>
+          </article>
+          <article class="process-card">
+            <h3>Build and revise</h3>
+            <p>You review a working version, then we make practical changes until the site feels right.</p>
+          </article>
+          <article class="process-card">
+            <h3>Launch and check</h3>
+            <p>I help with launch details and make sure the basics work: mobile layout, links, forms, and metadata.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-muted" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-panel">
+          <div class="about-copy">
+            <p class="section-kicker">About</p>
+            <h2 id="about-title" class="section-title">Hi, I’m Austin.</h2>
+            <p>I’m based in Eastern North Carolina and build practical websites for small businesses and local organizations. My background is a mix of IT, business operations, and web design, which helps me think beyond how a site looks and focus on whether it actually helps the business.</p>
+            <p>I’m not trying to present Mozingo UX as a giant agency. It is a small side business built around clear communication, useful design, and honest project scope. If you need something clean, professional, and realistic, that is where I can help.</p>
+          </div>
+          <aside class="about-aside">
+            <div>
+              <h3>What I care about</h3>
+              <p>Clear language, fast-loading pages, mobile usability, practical calls to action, and making sure the site feels like the business it represents.</p>
+            </div>
+            <a class="btn btn-primary" href="#contact">Tell me what you need</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <p class="section-kicker">Contact</p>
+            <h2 id="contact-title" class="section-title">Want to talk through a website?</h2>
+            <p>Send a quick note about your business, what you have now, and what you want the site to do. No pressure. If I can help, I’ll tell you what a realistic next step looks like.</p>
+            <div class="contact-methods">
+              <a class="contact-method" href="mailto:mozingoux@gmail.com">
+                <span class="method-icon">@</span>
+                <span><strong>Email</strong><span>mozingoux@gmail.com</span></span>
+              </a>
+              <a class="contact-method" href="https://central-hac.com" target="_blank" rel="noopener noreferrer">
+                <span class="method-icon">↗</span>
+                <span><strong>Featured project</strong><span>central-hac.com</span></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New Mozingo UX project inquiry" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <div class="form-row">
+                <label>Name
+                  <input name="name" autocomplete="name" required />
+                </label>
+                <label>Email
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+              </div>
+              <label>Business / current website
+                <input name="business_or_website" placeholder="Business name or website, if you have one" />
+              </label>
+              <label>What kind of help do you need?
+                <select name="project_type" required>
+                  <option value="" selected disabled>Choose one</option>
+                  <option>New starter website</option>
+                  <option>Redesign an existing website</option>
+                  <option>Domain / hosting / web cleanup</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+              <label>Project details
+                <textarea name="message" required placeholder="Tell me what you’re trying to fix, build, or improve."></textarea>
+              </label>
+              <p class="form-help">This form sends your message to Mozingo UX by email.</p>
+              <button class="btn btn-primary" type="submit">Send project inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Mozingo UX. Practical websites for small businesses.</p>
+      <p><a href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a></p>
     </div>
   </footer>
 
