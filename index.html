@@ -3,855 +3,537 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mozingo UX — Practical websites for local small businesses</title>
-  <meta name="description" content="Mozingo UX builds clean, practical websites for small businesses, contractors, and local organizations that need to look professional online without a big agency process." />
-  <meta name="theme-color" content="#111827" />
+  <title>Mozingo UX — Practical websites for small businesses</title>
+  <meta name="description" content="Mozingo UX builds clean, practical websites for small businesses, nonprofits, venues, and local organizations." />
+  <meta name="theme-color" content="#1d4d3d" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #111827;
-      --muted: #5f6b7a;
-      --subtle: #8b95a3;
-      --paper: #fbfaf7;
-      --white: #ffffff;
-      --line: #e4e0d8;
-      --line-dark: #cfc8bc;
-      --accent: #0f6b78;
-      --accent-soft: #e8f2f3;
-      --warm: #f5f1ea;
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --ink: #161616;
+      --muted: #66645f;
+      --line: #ddd8cf;
+      --accent: #1d4d3d;
+      --accent-soft: #e8efe9;
       --max: 1120px;
-      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --radius: 20px;
+      --shadow: 0 18px 50px rgba(0,0,0,.07);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: var(--font);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
-      background: var(--paper);
-      line-height: 1.65;
+      background: var(--bg);
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
-    a { color: inherit; }
-    img, iframe { max-width: 100%; }
-    h1, h2, h3, p { margin-top: 0; }
 
-    .skip-link {
-      position: absolute;
-      left: -999px;
-      top: 12px;
-      z-index: 100;
-      background: var(--ink);
-      color: var(--white);
-      padding: 10px 14px;
-      text-decoration: none;
-    }
-    .skip-link:focus { left: 12px; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    .site-header {
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+
+    header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(251, 250, 247, 0.92);
+      z-index: 20;
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(247,244,238,.88);
+      border-bottom: 1px solid rgba(221,216,207,.75);
     }
+
     .nav {
-      max-width: var(--max);
-      margin: 0 auto;
-      min-height: 70px;
-      padding: 0 24px;
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
+      gap: 24px;
     }
+
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      font-size: 1.05rem;
-    }
-    .brand-mark {
-      width: 31px;
-      height: 31px;
-      display: inline-grid;
-      place-items: center;
-      border: 1px solid var(--ink);
-      font-size: 0.68rem;
-      letter-spacing: -0.02em;
-    }
-    .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 600;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      font-size: 1.05rem;
     }
-    .nav-links a,
-    .footer a { text-decoration: none; }
-    .nav-links a:hover,
-    .footer a:hover { color: var(--ink); }
-    .nav-actions { display: flex; gap: 10px; align-items: center; }
 
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: .83rem;
+      letter-spacing: -.04em;
+    }
+
+    nav { display: flex; align-items: center; gap: 24px; font-size: .94rem; }
+    nav a { color: #45433f; }
+    nav a:hover { color: var(--ink); }
+
+    .nav-cta,
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 43px;
-      padding: 10px 16px;
-      border: 1px solid var(--ink);
-      background: transparent;
-      color: var(--ink);
-      text-decoration: none;
-      font: inherit;
-      font-size: 0.92rem;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
       font-weight: 700;
-      cursor: pointer;
-      transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+      transition: transform .18s ease, background .18s ease;
     }
-    .btn:hover { background: var(--ink); color: var(--white); }
-    .btn-primary { background: var(--ink); color: var(--white); }
-    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-    .btn-light { border-color: var(--line-dark); color: var(--ink); background: var(--white); }
-    .btn-light:hover { background: var(--ink); border-color: var(--ink); color: var(--white); }
 
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .section {
-      padding: 92px 0;
-      border-top: 1px solid var(--line);
-    }
-    .section-warm { background: var(--warm); }
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 34px;
-    }
-    .kicker {
-      margin-bottom: 13px;
-      color: var(--accent);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .section-title {
-      margin-bottom: 14px;
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      line-height: 1.04;
-      letter-spacing: -0.06em;
-      font-weight: 800;
-    }
-    .section-text {
-      max-width: 710px;
-      color: var(--muted);
-      font-size: 1.03rem;
-      margin-bottom: 0;
-    }
+    .nav-cta,
+    .btn-primary { background: var(--ink); color: #fff; }
+    .nav-cta:hover,
+    .btn-primary:hover { transform: translateY(-1px); background: #2a2a2a; }
+    .btn-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.55); }
+    .btn-secondary:hover { background: white; transform: translateY(-1px); }
 
     .hero {
-      padding: 98px 0 84px;
-    }
-    .hero-grid {
+      padding: 108px 0 92px;
       display: grid;
-      grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
-      gap: 76px;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 72px;
       align-items: end;
     }
-    .hero h1 {
-      max-width: 790px;
-      margin-bottom: 22px;
-      font-size: clamp(3rem, 7vw, 5.9rem);
-      line-height: 0.94;
-      letter-spacing: -0.085em;
-      font-weight: 800;
-    }
-    .hero-copy {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
-    }
-    .hero-note {
-      margin: 26px 0 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-    .hero-note strong { color: var(--ink); }
-    .hero-panel {
-      border-top: 2px solid var(--ink);
-      padding-top: 22px;
-    }
-    .availability {
-      display: inline-block;
-      margin-bottom: 14px;
-      color: var(--accent);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+
+    .eyebrow {
       text-transform: uppercase;
-    }
-    .hero-panel h2 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-      line-height: 1.2;
-      letter-spacing: -0.035em;
-    }
-    .hero-panel p {
+      letter-spacing: .13em;
+      font-weight: 800;
+      font-size: .76rem;
+      color: var(--accent);
       margin-bottom: 22px;
-      color: var(--muted);
-      font-size: 0.96rem;
     }
-    .focus-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      border-top: 1px solid var(--line);
-    }
-    .focus-list li {
-      display: grid;
-      grid-template-columns: 116px 1fr;
-      gap: 18px;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-    .focus-list strong {
-      color: var(--ink);
-      font-size: 0.9rem;
-    }
-    .principles {
-      list-style: none;
-      margin: 22px 0 0;
-      padding: 0;
-      display: grid;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-    .principles li::before {
-      content: "— ";
-      color: var(--accent);
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 26px;
+      max-width: 810px;
+      font-size: clamp(3.4rem, 7vw, 6.8rem);
+      line-height: .96;
+      letter-spacing: -.025em;
       font-weight: 800;
     }
 
-    .fit-grid,
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0;
-      border-top: 1px solid var(--line-dark);
-      border-left: 1px solid var(--line-dark);
-      background: var(--white);
+    .hero-copy {
+      max-width: 680px;
+      font-size: clamp(1.06rem, 1.5vw, 1.28rem);
+      color: #55524d;
+      margin-bottom: 30px;
     }
-    .fit-card,
-    .service-card {
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       padding: 28px;
-      border-right: 1px solid var(--line-dark);
-      border-bottom: 1px solid var(--line-dark);
-      background: var(--white);
+      box-shadow: var(--shadow);
     }
-    .fit-number,
-    .step-number {
+
+    .price-card strong {
       display: block;
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      margin-bottom: 24px;
-    }
-    .fit-card h3,
-    .service-card h3,
-    .process-card h3 {
-      margin-bottom: 9px;
-      font-size: 1.08rem;
-      line-height: 1.28;
-      letter-spacing: -0.025em;
-    }
-    .fit-card p,
-    .service-card p,
-    .process-card p {
-      color: var(--muted);
-      font-size: 0.96rem;
-      margin-bottom: 0;
+      font-size: 2.1rem;
+      letter-spacing: -.05em;
+      margin-bottom: 6px;
     }
 
-    .work-layout {
+    .price-card p { color: var(--muted); margin-bottom: 0; }
+
+    section { padding: 92px 0; border-top: 1px solid var(--line); }
+
+    .section-head {
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
-      gap: 44px;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 40px;
       align-items: start;
-    }
-    .project-meta {
-      border-top: 2px solid var(--ink);
-      padding-top: 22px;
-    }
-    .project-meta h3 {
-      margin-bottom: 14px;
-      font-size: clamp(1.7rem, 3vw, 2.35rem);
-      line-height: 1.1;
-      letter-spacing: -0.055em;
-    }
-    .project-meta p { color: var(--muted); }
-    .work-list {
-      list-style: none;
-      margin: 26px 0 28px;
-      padding: 0;
-      border-top: 1px solid var(--line);
-    }
-    .work-list li {
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .work-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .preview-frame {
-      border: 1px solid var(--line-dark);
-      background: var(--white);
-    }
-    .preview-label {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.86rem;
-    }
-    .preview-label strong { color: var(--ink); }
-    .iframe-wrap {
-      position: relative;
-      min-height: 520px;
-      background: var(--white);
-    }
-    .iframe-wrap iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background: var(--white);
-    }
-    .preview-note {
-      margin: 0;
-      padding: 12px 16px;
-      border-top: 1px solid var(--line);
-      color: var(--subtle);
-      font-size: 0.8rem;
+      margin-bottom: 44px;
     }
 
-    .service-card.featured { background: #fcfbf8; }
-    .price {
-      margin: 21px 0 18px;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .price strong {
-      font-size: 2rem;
+    .section-head h2,
+    .project-copy h2,
+    .about h2,
+    .contact h2 {
+      font-size: clamp(2.25rem, 4.5vw, 4rem);
       line-height: 1;
-      letter-spacing: -0.055em;
-    }
-    .price span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .service-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 22px 0 0;
-      border-top: 1px solid var(--line);
-    }
-    .service-card li {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.93rem;
-    }
-    .scope-note {
-      max-width: 900px;
-      margin: 24px 0 0;
-      padding-left: 18px;
-      border-left: 3px solid var(--accent);
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .scope-note strong { color: var(--ink); }
-
-    .process-list {
-      display: grid;
-      gap: 0;
-      border-top: 1px solid var(--line-dark);
-    }
-    .process-card {
-      display: grid;
-      grid-template-columns: 170px minmax(0, 1fr);
-      gap: 28px;
-      padding: 26px 0;
-      border-bottom: 1px solid var(--line-dark);
-    }
-    .process-card h3 { margin-bottom: 5px; }
-
-    .about-layout,
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-      gap: 52px;
-      align-items: start;
-    }
-    .about-copy p { color: var(--muted); }
-    .about-copy p:last-child { margin-bottom: 0; }
-    .about-aside {
-      padding-top: 4px;
-      border-top: 2px solid var(--ink);
-    }
-    .about-aside h3 {
-      margin-bottom: 10px;
-      font-size: 1.12rem;
-      letter-spacing: -0.03em;
-    }
-    .about-aside p {
-      margin-bottom: 24px;
-      color: var(--muted);
+      letter-spacing: -.035em;
+      margin-bottom: 18px;
     }
 
-    .contact-card {
-      border-top: 2px solid var(--ink);
-      padding-top: 22px;
-    }
-    .contact-card p { color: var(--muted); }
-    .contact-methods {
+    .section-head p { font-size: 1.1rem; color: var(--muted); max-width: 650px; }
+
+    .services {
       display: grid;
-      gap: 0;
-      margin-top: 26px;
-      border-top: 1px solid var(--line-dark);
-    }
-    .contact-method {
-      display: grid;
-      grid-template-columns: 80px 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line-dark);
-      text-decoration: none;
-    }
-    .contact-method span { min-width: 0; }
-    .contact-method strong {
-      display: block;
-      font-size: 0.94rem;
-    }
-    .contact-method span span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      overflow-wrap: anywhere;
     }
 
-    .form-card {
-      padding: 28px;
-      border: 1px solid var(--line-dark);
-      background: var(--white);
+    .service {
+      background: rgba(255,255,255,.6);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px;
+      min-height: 235px;
     }
-    form { display: grid; gap: 15px; }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-    label {
-      display: grid;
-      gap: 7px;
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-    input, select, textarea {
-      width: 100%;
-      min-height: 48px;
-      border: 1px solid var(--line-dark);
-      background: var(--paper);
-      color: var(--ink);
-      padding: 12px 13px;
-      font: inherit;
-      outline: none;
-      border-radius: 0;
-    }
-    textarea { min-height: 132px; resize: vertical; }
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(15, 107, 120, 0.12);
-      background: var(--white);
-    }
-    .form-help {
-      margin: -3px 0 0;
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-    button.btn { width: 100%; }
 
-    .footer {
-      padding: 34px 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.9rem;
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      margin-bottom: 46px;
     }
-    .footer-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 24px;
+
+    .service h3 { font-size: 1.4rem; letter-spacing: -.03em; margin-bottom: 10px; }
+    .service p { color: var(--muted); margin-bottom: 0; }
+
+    .project {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .project-copy p { color: var(--muted); font-size: 1.06rem; }
+    .project-meta { margin: 26px 0 30px; display: grid; gap: 11px; }
+    .project-meta div { display: flex; gap: 10px; align-items: baseline; }
+    .project-meta span { min-width: 92px; color: #8a867f; font-size: .84rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+
+    .browser {
+      border: 1px solid #cbc5bb;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #e8e4dc;
+      box-shadow: 0 28px 70px rgba(0,0,0,.12);
+    }
+
+    .browser-top {
+      height: 44px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
+      gap: 7px;
+      padding: 0 16px;
+      background: #efebe4;
+      border-bottom: 1px solid #d7d1c8;
     }
-    .footer p { margin: 0; }
 
-    @media (max-width: 960px) {
-      .hero-grid,
-      .work-layout,
-      .about-layout,
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero { padding-top: 74px; }
-      .fit-grid,
-      .services-grid { grid-template-columns: 1fr; }
-      .iframe-wrap { min-height: 430px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #b8b3aa; }
+    .browser iframe { width: 100%; height: 510px; border: 0; background: white; display: block; }
+    .browser-fallback { display: none; padding: 64px 28px; text-align: center; background: white; }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
-    @media (max-width: 720px) {
-      .nav { min-height: 64px; padding: 0 18px; }
-      .nav-links { display: none; }
-      .nav-actions .btn-light { display: none; }
-      .container { padding: 0 18px; }
-      .section { padding: 70px 0; }
-      .hero { padding: 62px 0 68px; }
-      .hero h1 { font-size: clamp(2.65rem, 16vw, 4.2rem); }
-      .focus-list li,
-      .process-card,
-      .contact-method,
-      .form-row { grid-template-columns: 1fr; gap: 6px; }
-      .fit-card,
-      .service-card,
-      .form-card { padding: 22px; }
-      .preview-label { display: block; }
-      .preview-label span { display: block; margin-top: 4px; }
-      .iframe-wrap { min-height: 360px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
+
+    .step { padding: 32px 26px 36px 0; }
+    .step + .step { border-left: 1px solid var(--line); padding-left: 26px; }
+    .step small { font-weight: 800; color: var(--accent); }
+    .step h3 { font-size: 1.2rem; letter-spacing: -.025em; margin: 34px 0 10px; }
+    .step p { color: var(--muted); font-size: .96rem; margin-bottom: 0; }
+
+    .about {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about p { max-width: 690px; color: var(--muted); font-size: 1.12rem; }
+
+    .contact-shell {
+      background: var(--ink);
+      color: white;
+      border-radius: 30px;
+      padding: 64px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 64px;
+    }
+
+    .contact h2 { max-width: 520px; }
+    .contact p { color: #c9c8c4; max-width: 520px; }
+    .contact a.email { color: white; font-weight: 750; border-bottom: 1px solid #696969; }
+
+    form { display: grid; gap: 14px; }
+    label { font-size: .83rem; font-weight: 750; color: #d7d5d1; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid #414141;
+      background: #222;
+      color: white;
+      border-radius: 12px;
+      padding: 14px 15px;
+      font: inherit;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: #8c8c8c; }
+    textarea { min-height: 130px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-note { color: #989895; font-size: .82rem; margin: 2px 0 0; }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      border-radius: 999px;
+      min-height: 48px;
+      padding: 0 20px;
+      justify-self: start;
+    }
+
+    footer {
+      padding: 34px 0 42px;
+      color: #77746f;
+      font-size: .9rem;
+    }
+
+    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 860px) {
+      nav a:not(.nav-cta) { display: none; }
+      .hero, .section-head, .project, .about, .contact-shell { grid-template-columns: 1fr; }
+      .hero { padding: 72px 0 64px; gap: 34px; }
+      .price-card { max-width: 420px; }
+      .services { grid-template-columns: 1fr; }
+      .service { min-height: 0; }
+      .number { margin-bottom: 24px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .step:nth-child(3) { border-left: 0; }
+      .step:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .contact-shell { padding: 38px; gap: 38px; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .nav { min-height: 66px; }
+      h1 { font-size: 3.25rem; }
+      section { padding: 68px 0; }
+      .process-grid, .form-row { grid-template-columns: 1fr; }
+      .step + .step { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+      .contact-shell { padding: 28px; border-radius: 22px; }
+      .browser iframe { height: 400px; }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" aria-label="Site header">
-    <div class="nav">
-      <a class="brand" href="#home" aria-label="Mozingo UX home">
-        <span class="brand-mark">MU</span>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Mozingo UX home">
+        <span class="mark">MU</span>
         <span>Mozingo UX</span>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#work">Work</a>
+      <nav aria-label="Primary navigation">
         <a href="#services">Services</a>
+        <a href="#work">Work</a>
         <a href="#process">Process</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Start a project</a>
       </nav>
-      <div class="nav-actions">
-        <a class="btn btn-light" href="#work">View work</a>
-        <a class="btn btn-primary" href="#contact">Start a project</a>
-      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section id="home" class="hero">
-      <div class="container hero-grid">
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">Small-business web design · Eastern North Carolina</div>
+        <h1>Practical websites for small businesses.</h1>
+        <p class="hero-copy">I build clean, professional websites for local businesses, nonprofits, venues, and organizations that need a better presence online — without turning it into a giant agency project.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Tell me about your project</a>
+          <a class="btn btn-secondary" href="#work">See my work</a>
+        </div>
+      </div>
+
+      <aside class="price-card" aria-label="Starting price">
+        <div class="eyebrow" style="margin-bottom:10px">Simple starting point</div>
+        <strong>From $500</strong>
+        <p>For straightforward small-business sites. I’ll give you a clear scope and price before anything starts.</p>
+      </aside>
+    </div>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What I can help with</div>
+          <div>
+            <h2>Most small businesses need something simple that works.</h2>
+            <p>A site should make your business look credible, explain what you do, work well on a phone, and make it obvious how to contact you. That’s the job.</p>
+          </div>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <span class="number">01</span>
+            <h3>New Website</h3>
+            <p>Need something professional online? I can build a straightforward website around your business and what customers need to know.</p>
+          </article>
+          <article class="service">
+            <span class="number">02</span>
+            <h3>Website Redesign</h3>
+            <p>Already have a website, but it looks old or confusing? I can rebuild it into something cleaner and easier to use.</p>
+          </article>
+          <article class="service">
+            <span class="number">03</span>
+            <h3>Setup & Help</h3>
+            <p>Domains, hosting, contact forms, launch help, updates, and the technical details that come with getting a website online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap project">
+        <div class="project-copy">
+          <div class="eyebrow">Featured project</div>
+          <h2>Central Heating & Air Conditioning</h2>
+          <p>A cleaner, more professional site for an established Eastern North Carolina HVAC and mechanical contractor. The goal was simple: make the company easy to understand and easy to contact.</p>
+          <div class="project-meta">
+            <div><span>Project</span><strong>Website redesign</strong></div>
+            <div><span>Focus</span><strong>Credibility, services, contact</strong></div>
+            <div><span>Website</span><strong>central-hac.com</strong></div>
+          </div>
+          <a class="btn btn-primary" href="https://central-hac.com" target="_blank" rel="noreferrer">Open live site ↗</a>
+        </div>
+
+        <div class="browser" aria-label="Live preview of Central Heating and Air Conditioning website">
+          <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <iframe src="https://central-hac.com" title="Central Heating and Air Conditioning live website preview" loading="lazy"></iframe>
+          <div class="browser-fallback">Preview unavailable. <a href="https://central-hac.com" target="_blank" rel="noreferrer">Open the live site instead.</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <div>
+            <h2>From “we need a website” to live without making it complicated.</h2>
+          </div>
+        </div>
+
+        <div class="process-grid">
+          <article class="step">
+            <small>01</small>
+            <h3>Tell me what you need.</h3>
+            <p>Send me your current site, if you have one, and a little about what you want to improve.</p>
+          </article>
+          <article class="step">
+            <small>02</small>
+            <h3>I’ll give you a plan and price.</h3>
+            <p>We agree on what I’m building and what it costs before I start.</p>
+          </article>
+          <article class="step">
+            <small>03</small>
+            <h3>I build it.</h3>
+            <p>You get a working version to review, then we make the changes it needs.</p>
+          </article>
+          <article class="step">
+            <small>04</small>
+            <h3>We put it online.</h3>
+            <p>I handle the launch details and make sure the important stuff works.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about">
+        <div class="eyebrow">About</div>
         <div>
-          <p class="kicker">Small-business web design</p>
-          <h1>Practical websites for local businesses that need to look credible online.</h1>
-          <p class="hero-copy">I build clean, mobile-friendly websites for small businesses, contractors, and local organizations that need a professional web presence without a bloated agency process.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Tell me about your project</a>
-            <a class="btn btn-light" href="#work">See the featured build</a>
+          <h2>Hi, I’m Austin.</h2>
+          <p>I’m based in Eastern North Carolina and run Mozingo UX as a small independent web studio. My background is in IT, business operations, and web design, so I focus on websites that are practical for the businesses using them — not just nice to look at.</p>
+          <a class="btn btn-secondary" href="#contact">Tell me what you need</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="contact-shell">
+          <div>
+            <div class="eyebrow" style="color:#b8d5c9">Start a project</div>
+            <h2>Need a better website?</h2>
+            <p>Send me a quick note about your business and what you need. If I can help, I’ll tell you what a realistic next step looks like.</p>
+            <p>Email: <a class="email" href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a></p>
           </div>
-          <p class="hero-note"><strong>Built by Austin Mozingo in Eastern North Carolina.</strong> Straightforward scope, clear communication, and honest recommendations.</p>
-        </div>
 
-        <aside class="hero-panel" aria-label="What Mozingo UX focuses on">
-          <span class="availability">Taking projects</span>
-          <h2>A small, focused web studio for practical business sites.</h2>
-          <p>Not a big agency. Not a template dump. Just clean web work built around what your customers actually need to find.</p>
-          <ul class="focus-list">
-            <li><strong>Starter sites</strong><span>Simple, professional web presence.</span></li>
-            <li><strong>Redesigns</strong><span>Replace outdated or unclear pages.</span></li>
-            <li><strong>Launch help</strong><span>Domain, hosting, forms, and setup.</span></li>
-            <li><strong>Local focus</strong><span>Trades, service businesses, nonprofits.</span></li>
-          </ul>
-          <ul class="principles">
-            <li>Clear pages that explain who you are, what you do, and how to reach you.</li>
-            <li>Mobile-friendly layouts built for real customers, not design awards.</li>
-            <li>Honest scope: if I’m not the right fit, I’ll say so.</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section section-warm" aria-labelledby="fit-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Good fit</p>
-          <h2 id="fit-title" class="section-title">Built for businesses that need useful, not overcomplicated.</h2>
-          <p class="section-text">Most small businesses do not need a giant web project. They need a site that looks trustworthy, works on phones, makes their services easy to understand, and gives people a clear way to contact them.</p>
-        </div>
-        <div class="fit-grid">
-          <article class="fit-card">
-            <span class="fit-number">01</span>
-            <h3>Your current site feels outdated</h3>
-            <p>You have something online, but it no longer reflects the quality of the business behind it.</p>
-          </article>
-          <article class="fit-card">
-            <span class="fit-number">02</span>
-            <h3>You need a simple web presence</h3>
-            <p>You want a professional place to send customers, vendors, churches, donors, or local partners.</p>
-          </article>
-          <article class="fit-card">
-            <span class="fit-number">03</span>
-            <h3>You want help getting it live</h3>
-            <p>Domain, hosting, forms, email links, and launch details can be part of the process.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" class="section" aria-labelledby="work-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Featured work</p>
-          <h2 id="work-title" class="section-title">One active project, shown clearly.</h2>
-          <p class="section-text">My portfolio is intentionally small right now. Rather than padding it with inactive links, I’m highlighting a real, live business website and what it was built to accomplish.</p>
-        </div>
-
-        <div class="work-layout">
-          <article class="project-meta">
-            <p class="kicker">Live website</p>
-            <h3>Central Heating &amp; Air Conditioning of Kinston</h3>
-            <p>A redesigned website for an established Eastern North Carolina HVAC and mechanical contractor. The goal was a cleaner, more credible web presence that quickly communicates experience, services, service area, and contact options.</p>
-            <ul class="work-list">
-              <li>Positioned the company around commercial HVAC, mechanical contracting, service, and in-house sheet metal fabrication.</li>
-              <li>Created a simpler structure with Home, About, and Contact instead of unnecessary extra pages.</li>
-              <li>Focused calls to action around phone and office contact instead of vague quote funnels.</li>
-              <li>Made the site easier for general contractors, owners, and service customers to understand quickly.</li>
-            </ul>
-            <div class="work-actions">
-              <a class="btn btn-primary" href="https://central-hac.com" target="_blank" rel="noopener noreferrer">Open live site</a>
-              <a class="btn btn-light" href="#contact">Ask about a similar site</a>
-            </div>
-          </article>
-
-          <div class="preview-frame" aria-label="Live preview of Central HAC website">
-            <div class="preview-label">
-              <strong>Live preview</strong>
-              <span>central-hac.com</span>
-            </div>
-            <div class="iframe-wrap">
-              <iframe src="https://central-hac.com" title="Live preview of Central Heating and Air website" loading="lazy"></iframe>
-            </div>
-            <p class="preview-note">This panel attempts to load the live site directly. If a browser blocks the embedded preview, the button opens the project in a new tab.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="section section-warm" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Services</p>
-          <h2 id="services-title" class="section-title">Simple options, scoped honestly.</h2>
-          <p class="section-text">I’m best suited for straightforward websites, clean redesigns, and small-business web cleanup. Larger apps, complex e-commerce, and advanced custom systems may be better handled by a larger team.</p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card featured">
-            <h3>Starter Website</h3>
-            <p>For a business that needs a clean, professional site without turning it into a huge project.</p>
-            <div class="price"><strong>from $500</strong><span>depending on scope</span></div>
-            <ul>
-              <li>1–3 page static website</li>
-              <li>Mobile-friendly design</li>
-              <li>Content organization and basic copy cleanup</li>
-              <li>Contact form or direct email/phone CTA</li>
-              <li>Basic search and launch setup</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <h3>Website Refresh</h3>
-            <p>For existing sites that look dated, feel confusing, or no longer match the business.</p>
-            <ul>
-              <li>Cleaner layout and visual direction</li>
-              <li>Service and contact flow improvements</li>
-              <li>Mobile usability cleanup</li>
-              <li>Better calls to action</li>
-              <li>Launch support when ready</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <h3>Web Setup &amp; Cleanup</h3>
-            <p>For the behind-the-scenes web details that often slow small businesses down.</p>
-            <ul>
-              <li>Domain and hosting guidance</li>
-              <li>Contact form setup</li>
-              <li>Email and link cleanup</li>
-              <li>Basic analytics/search setup</li>
-              <li>Small fixes and practical recommendations</li>
-            </ul>
-          </article>
-        </div>
-
-        <p class="scope-note"><strong>A note on scope:</strong> I keep the offer intentionally realistic. If your project needs advanced booking systems, custom software, large e-commerce, or a full marketing team, I’ll be upfront about whether I can help or whether you need a different partner.</p>
-      </div>
-    </section>
-
-    <section id="process" class="section" aria-labelledby="process-title">
-      <div class="container">
-        <div class="section-head">
-          <p class="kicker">Process</p>
-          <h2 id="process-title" class="section-title">A straightforward path from idea to live site.</h2>
-          <p class="section-text">The goal is to make the process feel manageable, especially if you have never hired someone for a website before.</p>
-        </div>
-        <div class="process-list">
-          <article class="process-card">
-            <span class="step-number">01</span>
-            <div>
-              <h3>Talk through the need</h3>
-              <p>We identify what the site needs to say, who it is for, and what action visitors should take.</p>
-            </div>
-          </article>
-          <article class="process-card">
-            <span class="step-number">02</span>
-            <div>
-              <h3>Shape the content</h3>
-              <p>I help organize the pages, sections, wording, and contact flow before design takes over.</p>
-            </div>
-          </article>
-          <article class="process-card">
-            <span class="step-number">03</span>
-            <div>
-              <h3>Build and revise</h3>
-              <p>You review a working version, then we make practical changes until the site feels right.</p>
-            </div>
-          </article>
-          <article class="process-card">
-            <span class="step-number">04</span>
-            <div>
-              <h3>Launch and check</h3>
-              <p>I help with launch details and make sure the basics work: mobile layout, links, forms, and metadata.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section section-warm" aria-labelledby="about-title">
-      <div class="container about-layout">
-        <div class="section-head">
-          <p class="kicker">About</p>
-          <h2 id="about-title" class="section-title">Hi, I’m Austin.</h2>
-        </div>
-        <div class="about-copy">
-          <p>I’m based in Eastern North Carolina and build practical websites for small businesses and local organizations. My background is a mix of IT, business operations, and web design, which helps me think beyond how a site looks and focus on whether it actually helps the business.</p>
-          <p>I’m not trying to present Mozingo UX as a giant agency. It is a small side business built around clear communication, useful design, and honest project scope. If you need something clean, professional, and realistic, that is where I can help.</p>
-          <div class="about-aside">
-            <h3>What I care about</h3>
-            <p>Clear language, fast-loading pages, mobile usability, practical calls to action, and making sure the site feels like the business it represents.</p>
-            <a class="btn btn-primary" href="#contact">Tell me what you need</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="container contact-grid">
-        <div class="contact-card">
-          <p class="kicker">Contact</p>
-          <h2 id="contact-title" class="section-title">Want to talk through a website?</h2>
-          <p>Send a quick note about your business, what you have now, and what you want the site to do. No pressure. If I can help, I’ll tell you what a realistic next step looks like.</p>
-          <div class="contact-methods">
-            <a class="contact-method" href="mailto:mozingoux@gmail.com">
-              <strong>Email</strong>
-              <span><strong>Mozingo UX</strong><span>mozingoux@gmail.com</span></span>
-            </a>
-            <a class="contact-method" href="https://central-hac.com" target="_blank" rel="noopener noreferrer">
-              <strong>Project</strong>
-              <span><strong>Featured project</strong><span>central-hac.com</span></span>
-            </a>
-          </div>
-        </div>
-
-        <div class="form-card">
           <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Mozingo UX project inquiry" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <div class="form-row">
-              <label>Name
-                <input name="name" autocomplete="name" required />
-              </label>
-              <label>Email
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
             </div>
-            <label>Business / current website
-              <input name="business_or_website" placeholder="Business name or website, if you have one" />
-            </label>
-            <label>What kind of help do you need?
-              <select name="project_type" required>
+
+            <div>
+              <label for="business">Business / current website</label>
+              <input id="business" name="business_or_website" placeholder="Business name or website, if you have one" />
+            </div>
+
+            <div>
+              <label for="help">What kind of help do you need?</label>
+              <select id="help" name="project_type" required>
                 <option value="" selected disabled>Choose one</option>
-                <option>New starter website</option>
-                <option>Redesign an existing website</option>
-                <option>Domain / hosting / web cleanup</option>
+                <option>New website</option>
+                <option>Website redesign</option>
+                <option>Setup / cleanup / updates</option>
                 <option>Not sure yet</option>
               </select>
-            </label>
-            <label>Project details
-              <textarea name="message" required placeholder="Tell me what you’re trying to fix, build, or improve."></textarea>
-            </label>
-            <p class="form-help">This form sends your message to Mozingo UX by email.</p>
-            <button class="btn btn-primary" type="submit">Send project inquiry</button>
+            </div>
+
+            <div>
+              <label for="details">Project details</label>
+              <textarea id="details" name="message" required placeholder="A few sentences is plenty."></textarea>
+            </div>
+
+            <p class="form-note">This form sends your message to Mozingo UX by email.</p>
+            <button type="submit">Send project inquiry</button>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <p>© <span id="year"></span> Mozingo UX. Practical websites for small businesses.</p>
-      <p><a href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a></p>
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year"></span> Mozingo UX. Practical websites for small businesses.</span>
+      <a href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a>
     </div>
   </footer>
-
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
