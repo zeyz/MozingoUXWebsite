@@ -9,7 +9,7 @@ const mail='mailto:'+email+'?subject=Website%20project%20inquiry';
 const arrow='<span aria-hidden="true">↗</span>';
 function header(page){return `<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="wrap header-inner">
-  <a class="brand" href="/" aria-label="MozingoUX home"><span class="brand-mark" aria-hidden="true">MU</span>Mozingo<span class="brand-accent">UX</span></a>
+  <a class="brand" href="/" aria-label="MozingoUX home"><img class="brand-mark" src="/assets/images/mozingo-mark.svg" width="33" height="33" alt="" aria-hidden="true">Mozingo<span class="brand-accent">UX</span></a>
   <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
   <nav id="site-nav" class="site-nav" aria-label="Main navigation">
     <a href="/work/"${page==='work'?' aria-current="page"':''}>Work</a>
@@ -30,7 +30,7 @@ function layout({page='home',title,description,route='/',content,noindex=false})
 <meta name="theme-color" content="#174f49">
 ${noindex?'<meta name="robots" content="noindex,follow">':''}
 <link rel="canonical" href="${url}">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate icon" href="/favicon.ico">
+<link rel="icon" href="/favicon-m.svg" type="image/svg+xml"><link rel="alternate icon" href="/favicon-m.ico">
 <meta property="og:type" content="website"><meta property="og:site_name" content="MozingoUX">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${url}">
 <meta property="og:image" content="https://mozingoux.com/assets/images/social-preview.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MozingoUX — Simple websites for Eastern NC businesses">

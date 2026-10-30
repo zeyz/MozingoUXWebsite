@@ -28,7 +28,7 @@ h1, h2, h3 { color: var(--ink); }
 .site-header { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--line); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 84px; }
 .brand { display: inline-flex; align-items: center; gap: 0; text-decoration: none; font-size: 21px; font-weight: 760; letter-spacing: -.9px; white-space: nowrap; }
-.brand-mark { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 5px; margin-right: 11px; background: var(--teal); color: white; font-size: 10px; letter-spacing: -.5px; font-weight: 650; }
+.brand-mark { display: block; flex: none; width: 33px; height: 33px; margin-right: 11px; }
 .brand-accent { color: var(--teal); }
 .site-nav { display: flex; align-items: center; gap: 28px; font-size: 13px; }
 .site-nav a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; min-height: 44px; padding: 5px 0; }
