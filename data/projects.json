@@ -221,7 +221,7 @@
   },
   {
     "id": "just-one-more",
-    "name": "Just One More",
+    "name": "Austin’s Arcade",
     "industry": "Browser arcade",
     "description": "My personal arcade: six playable games, optional sound, and high scores saved on your device.",
     "kind": "Personal project",
@@ -229,10 +229,10 @@
     "url": "https://zeyz.github.io/mozingoux-just-one-more/",
     "featured": false,
     "repository": "https://github.com/zeyz/mozingoux-just-one-more",
-    "image": "/assets/projects/just-one-more.webp",
+    "image": "/assets/projects/austins-arcade.webp",
     "imageWidth": 1200,
-    "imageHeight": 889,
-    "imageAlt": "Screenshot of Just One More website",
+    "imageHeight": 750,
+    "imageAlt": "Screenshot of Austin’s Arcade website",
     "repositoryVerified": true
   }
 ]
