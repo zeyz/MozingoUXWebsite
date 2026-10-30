@@ -48,7 +48,7 @@ function projectCard(p,{eager=false}={}){
  const preview=p.url?`<a class="project-image" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" aria-label="${accessible}">${image}</a>`:`<div class="project-image">${image}</div>`;
  return `<article class="project" data-category="${p.category}">
  ${preview}
- <div class="project-meta"><span>${esc(p.industry)}</span><span class="project-kind">${esc(p.kind)}</span></div>
+ <div class="project-meta"><span>${esc(p.industry)}</span></div>
  <h3>${esc(p.name)}</h3><p>${esc(p.description)}</p>
  ${p.url?`<a class="text-link project-link" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" aria-label="${accessible}">${p.kind==='Live project'?'Visit website':'View demo'} ${arrow}</a>`:'<span class="unavailable">Website currently unavailable</span>'}
 </article>`;
@@ -77,8 +77,11 @@ const homeContent=`
  <p class="price-note"><strong>Straightforward websites start at $500.</strong> Custom and interactive projects are quoted separately.</p>
 </section>
 <section id="work" class="selected-work section wrap">
- <div class="section-heading"><div><p class="eyebrow">Selected work</p><h2>A clear idea.<br>A website to match.</h2></div><a class="text-link" href="/work/">View the full portfolio ${arrow}</a></div>
- <div class="project-grid home-projects">${projects.filter(p=>p.featured).map(p=>projectCard(p,{eager:true})).join('\n')}</div>
+ <div class="section-heading"><div><p class="eyebrow">Work</p><h2>A clear idea.<br>A website to match.</h2></div><a class="text-link" href="/work/">View the full portfolio ${arrow}</a></div>
+ <div class="portfolio-browser">
+ <div id="home-projects" class="home-projects" role="region" aria-label="Website portfolio" tabindex="0" aria-describedby="portfolio-help">${[...projects.filter(p=>p.featured),...projects.filter(p=>!p.featured)].map((p,i)=>projectCard(p,{eager:i<3})).join('\n')}</div>
+ <div class="portfolio-controls"><p id="portfolio-help">Scroll to explore all ${projects.length} projects.</p><div class="portfolio-arrows" hidden><button type="button" data-scroll="-1" aria-controls="home-projects" aria-label="Previous projects"><span aria-hidden="true">←</span></button><button type="button" data-scroll="1" aria-controls="home-projects" aria-label="Next projects"><span aria-hidden="true">→</span></button></div></div>
+ </div>
 </section>
 <section id="services" class="services section"><div class="wrap services-layout"><div><p class="eyebrow">Services</p><h2>The essentials,<br>done thoughtfully.</h2></div><div class="service-list">
  <article><h3>New websites</h3><p>A clear, mobile-friendly home for your services, business information, and contact details.</p></article>
@@ -95,14 +98,14 @@ const workContent=`
 <section class="page-intro wrap"><p class="eyebrow">Work</p><h1>Websites with<br><span>a clear purpose.</span></h1><p>Business websites, independent concepts, and a few projects built just for the fun of it.</p></section>
 <section class="work-section wrap" aria-label="Portfolio projects"><div class="work-toolbar" hidden><div class="filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all" aria-pressed="true">All work</button><button type="button" data-filter="business" aria-pressed="false">Business websites</button><button type="button" data-filter="interactive" aria-pressed="false">Interactive projects</button></div><p id="project-count" role="status" aria-live="polite">Showing ${projects.length} projects</p></div>
  <div class="project-grid portfolio-grid">${projects.map((p,i)=>projectCard(p,{eager:i<3})).join('\n')}</div>
- <p class="portfolio-note">Projects marked “Concept” are independent examples for fictional businesses, rather than client commissions. Custom and interactive work is quoted separately from straightforward websites starting at $500. The archived JKM preview shows earlier work; its website is currently unavailable.</p>
+ <p class="portfolio-note">This portfolio includes client work, independent examples for fictional businesses, and personal projects. Custom and interactive work is quoted separately from straightforward websites starting at $500. The archived JKM preview shows earlier work; its website is currently unavailable.</p>
 </section>
 <section class="small-cta wrap"><div><p class="eyebrow">Your next step</p><h2>Have a website in mind?</h2></div><a class="button button-primary" href="/#contact">Start a project ${arrow}</a></section>`;
 const aboutContent=`
 <section class="about-page wrap"><div class="about-layout"><figure class="portrait"><picture><source type="image/webp" srcset="/assets/images/austin-320.webp 320w, /assets/images/austin-560.webp 560w" sizes="(max-width: 700px) 240px, 280px"><img src="/assets/images/austin-560.jpg" alt="Austin Mozingo seated at a table" width="560" height="700" fetchpriority="high"></picture><figcaption>Austin Mozingo · MozingoUX</figcaption></figure>
 <div class="about-copy"><p class="eyebrow">About me</p><h1>Hi, I’m Austin.</h1>
 <p>I’m an IT Manager for a mechanical contractor in Eastern North Carolina. Working inside a local business gives me a practical understanding of what small businesses need from their websites: clear information, a professional appearance, and an easy way for customers to get in touch.</p>
-<p>I earned my degree in Information Technology from the University of Arizona Global Campus. Through MozingoUX, I design straightforward websites for small businesses like the one I work for.</p>
+<p>I earned my degree in Information Technology from the University of Arizona. My goal is to make "getting an online presence" a simple, straightforward process for businesses whose focus is often elsewhere.</p>
 <div class="actions"><a class="text-link" href="/work/">View my work ${arrow}</a><a class="button button-primary" href="/#contact">Start a project ${arrow}</a></div>
 </div></div></section>`;
 const pages=[

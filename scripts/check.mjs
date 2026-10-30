@@ -29,11 +29,14 @@ assert(home.includes('start at $500')&&home.includes('Custom and interactive pro
 assert(home.includes('action="https://formsubmit.co/mozingoux@gmail.com" method="POST"'));
 assert(home.includes('mailto:mozingoux@gmail.com'));
 assert(home.includes('name="_next" value="https://mozingoux.com/thanks/"'));
-assert(about.includes('University of Arizona Global Campus'));
+assert(about.includes('I earned my degree in Information Technology'));
 assert(about.includes('/assets/images/austin-560.jpg')&&about.includes('srcset='));
 assert.equal((await readFile(path.join(root,'CNAME'),'utf8')),'mozingoux.com','Custom domain bytes changed');
 await access(path.join(root,'.nojekyll'));
 const projects=JSON.parse(await readFile(path.join(root,'data/projects.json'),'utf8'));
+assert(!home.includes('project-kind')&&!documents.get('work/index.html').includes('project-kind'));
+assert.equal((home.match(/<article class="project"/g)||[]).length,projects.length);
+assert(home.includes('id="home-projects"')&&home.includes('aria-label="Next projects"'));
 assert.equal(projects[0].id,'central-hac');assert.equal(projects.length,15);
 assert.equal(projects.filter(p=>p.kind==='Concept').length,10);
 assert.equal(projects.filter(p=>p.kind==='Passion project').length,2);

@@ -65,7 +65,7 @@ h3 { font-size: 19px; line-height: 1.35; letter-spacing: -.4px; font-weight: 650
 a.project-image { transition: border-color .15s; }
 a.project-image:hover { border-color: var(--teal); }
 .project-meta { width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 17px 0 11px; font-size: 10px; color: var(--muted); line-height: 1.5; }
-.project-kind { text-align: right; white-space: nowrap; }
+
 .project h3 { margin: 0 0 10px; max-width: 320px; font-size: 20px; }
 .project>p { font-size: 13px; line-height: 1.75; color: var(--muted); margin-bottom: 12px; }
 .project-link { margin-top: auto; font-size: 12px; }
@@ -143,7 +143,7 @@ textarea::placeholder { color: #617068; }
   .project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .home-projects { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
   .project-meta { flex-direction: column; gap: 3px; }
-  .project-kind { text-align: left; }
+
   .project h3 { font-size: 18px; }
   .services-layout, .contact-heading { grid-template-columns: .85fr 1.15fr; gap: 40px; }
   .service-list article { display: block; }
@@ -248,3 +248,16 @@ textarea::placeholder { color: #617068; }
   .project>p, .service-list p, .process-list p { font-size: 14px; }
   .portfolio-note { font-size: 12px; }
 }
+
+/* A native scrollable portfolio: touch, trackpad, keyboard, or arrow buttons. */
+.home-projects { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 52px) / 3); gap: 26px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 6px; padding: 6px 6px 18px; margin: -6px; scrollbar-width: thin; scrollbar-color: #73968a var(--soft); }
+.home-projects .project { scroll-snap-align: start; }
+.home-projects:focus-visible { outline: 3px solid var(--teal); outline-offset: 5px; }
+.portfolio-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 17px; }
+.portfolio-controls p { margin: 0; font-size: 12px; color: var(--muted); }
+.portfolio-arrows { display: flex; gap: 10px; }
+.portfolio-arrows button { width: 46px; height: 46px; border: 1px solid #b6c7bc; border-radius: 4px; color: var(--teal); background: transparent; font-size: 22px; }
+.portfolio-arrows button:hover { background: var(--soft); }
+.portfolio-arrows button[aria-disabled="true"] { opacity: .4; cursor: default; }
+@media (max-width:1000px) { .home-projects { grid-auto-columns: calc((100% - 26px) / 2); } }
+@media (max-width:700px) { .home-projects { grid-auto-columns: 88%; gap: 20px; } }

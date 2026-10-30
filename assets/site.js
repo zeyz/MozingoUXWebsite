@@ -21,3 +21,31 @@ if(toolbar){
 }
 // Preserve old homepage About links without keeping a biography on the homepage.
 if(['/','/index.html'].includes(location.pathname)&&location.hash==='#about')location.replace('/about/');
+
+const portfolio=document.querySelector('#home-projects');
+if(portfolio){
+  const controls=document.querySelector('.portfolio-arrows');
+  const arrows=[...controls.querySelectorAll('[data-scroll]')];
+  controls.hidden=false;
+  const updateArrows=()=>{
+    arrows[0].setAttribute('aria-disabled',String(portfolio.scrollLeft<2));
+    arrows[1].setAttribute('aria-disabled',String(portfolio.scrollLeft+portfolio.clientWidth>=portfolio.scrollWidth-2));
+  };
+  const move=direction=>{
+    const card=portfolio.querySelector('.project');
+    const step=card.getBoundingClientRect().width+parseFloat(getComputedStyle(portfolio).columnGap);
+    portfolio.scrollBy({left:direction*step,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  };
+  arrows.forEach(button=>button.addEventListener('click',()=>{if(button.getAttribute('aria-disabled')!=='true')move(Number(button.dataset.scroll));}));
+  portfolio.addEventListener('keydown',event=>{
+    if(event.target!==portfolio)return;
+    if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){
+      event.preventDefault();
+      if(event.key==='Home'||event.key==='End')portfolio.scrollTo({left:event.key==='Home'?0:portfolio.scrollWidth,behavior:'instant'});
+      else move(event.key==='ArrowLeft'?-1:1);
+    }
+  });
+  portfolio.addEventListener('scroll',updateArrows,{passive:true});
+  new ResizeObserver(updateArrows).observe(portfolio);
+  updateArrows();
+}
