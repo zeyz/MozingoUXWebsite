@@ -1,541 +1,82 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mozingo UX — Practical websites for small businesses</title>
-  <meta name="description" content="Mozingo UX builds clean, practical websites for small businesses, nonprofits, venues, and local organizations." />
-  <meta name="theme-color" content="#1d4d3d" />
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f7f4ee;
-      --surface: #ffffff;
-      --ink: #161616;
-      --muted: #66645f;
-      --line: #ddd8cf;
-      --accent: #1d4d3d;
-      --accent-soft: #e8efe9;
-      --max: 1120px;
-      --radius: 20px;
-      --shadow: 0 18px 50px rgba(0,0,0,.07);
-    }
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web Design for Eastern NC Businesses | MozingoUX</title>
+<meta name="description" content="Simple, professional websites for Eastern North Carolina small businesses. Straightforward sites start at $500. Explore Austin Mozingo’s work and get in touch.">
+<meta name="theme-color" content="#174f49">
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(247,244,238,.88);
-      border-bottom: 1px solid rgba(221,216,207,.75);
-    }
-
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 800;
-      letter-spacing: -.03em;
-      font-size: 1.05rem;
-    }
-
-    .mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--ink);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: .83rem;
-      letter-spacing: -.04em;
-    }
-
-    nav { display: flex; align-items: center; gap: 24px; font-size: .94rem; }
-    nav a { color: #45433f; }
-    nav a:hover { color: var(--ink); }
-
-    .nav-cta,
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform .18s ease, background .18s ease;
-    }
-
-    .nav-cta,
-    .btn-primary { background: var(--ink); color: #fff; }
-    .nav-cta:hover,
-    .btn-primary:hover { transform: translateY(-1px); background: #2a2a2a; }
-    .btn-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.55); }
-    .btn-secondary:hover { background: white; transform: translateY(-1px); }
-
-    .hero {
-      padding: 108px 0 92px;
-      display: grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap: 72px;
-      align-items: end;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .13em;
-      font-weight: 800;
-      font-size: .76rem;
-      color: var(--accent);
-      margin-bottom: 22px;
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      margin-bottom: 26px;
-      max-width: 810px;
-      font-size: clamp(3.4rem, 7vw, 6.8rem);
-      line-height: .96;
-      letter-spacing: -.025em;
-      font-weight: 800;
-    }
-
-    .hero-copy {
-      max-width: 680px;
-      font-size: clamp(1.06rem, 1.5vw, 1.28rem);
-      color: #55524d;
-      margin-bottom: 30px;
-    }
-
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-
-    .price-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .price-card strong {
-      display: block;
-      font-size: 2.1rem;
-      letter-spacing: -.05em;
-      margin-bottom: 6px;
-    }
-
-    .price-card p { color: var(--muted); margin-bottom: 0; }
-
-    section { padding: 92px 0; border-top: 1px solid var(--line); }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: .72fr 1.28fr;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 44px;
-    }
-
-    .section-head h2,
-    .project-copy h2,
-    .about h2,
-    .contact h2 {
-      font-size: clamp(2.25rem, 4.5vw, 4rem);
-      line-height: 1;
-      letter-spacing: -.035em;
-      margin-bottom: 18px;
-    }
-
-    .section-head p { font-size: 1.1rem; color: var(--muted); max-width: 650px; }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .service {
-      background: rgba(255,255,255,.6);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 30px;
-      min-height: 235px;
-    }
-
-    .number {
-      display: inline-grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: .78rem;
-      font-weight: 800;
-      margin-bottom: 46px;
-    }
-
-    .service h3 { font-size: 1.4rem; letter-spacing: -.03em; margin-bottom: 10px; }
-    .service p { color: var(--muted); margin-bottom: 0; }
-
-    .project {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 58px;
-      align-items: center;
-    }
-
-    .project-copy p { color: var(--muted); font-size: 1.06rem; }
-    .project-meta { margin: 26px 0 30px; display: grid; gap: 11px; }
-    .project-meta div { display: flex; gap: 10px; align-items: baseline; }
-    .project-meta span { min-width: 92px; color: #8a867f; font-size: .84rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
-
-    .browser {
-      border: 1px solid #cbc5bb;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #e8e4dc;
-      box-shadow: 0 28px 70px rgba(0,0,0,.12);
-    }
-
-    .browser-top {
-      height: 44px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 0 16px;
-      background: #efebe4;
-      border-bottom: 1px solid #d7d1c8;
-    }
-
-    .dot { width: 9px; height: 9px; border-radius: 50%; background: #b8b3aa; }
-    .browser iframe { width: 100%; height: 510px; border: 0; background: white; display: block; }
-    .browser-fallback { display: none; padding: 64px 28px; text-align: center; background: white; }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .step { padding: 32px 26px 36px 0; }
-    .step + .step { border-left: 1px solid var(--line); padding-left: 26px; }
-    .step small { font-weight: 800; color: var(--accent); }
-    .step h3 { font-size: 1.2rem; letter-spacing: -.025em; margin: 34px 0 10px; }
-    .step p { color: var(--muted); font-size: .96rem; margin-bottom: 0; }
-
-    .about {
-      display: grid;
-      grid-template-columns: .72fr 1.28fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .about p { max-width: 690px; color: var(--muted); font-size: 1.12rem; }
-
-    .contact-shell {
-      background: var(--ink);
-      color: white;
-      border-radius: 30px;
-      padding: 64px;
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 64px;
-    }
-
-    .contact h2 { max-width: 520px; }
-    .contact p { color: #c9c8c4; max-width: 520px; }
-    .contact a.email { color: white; font-weight: 750; border-bottom: 1px solid #696969; }
-
-    form { display: grid; gap: 14px; }
-    label { font-size: .83rem; font-weight: 750; color: #d7d5d1; }
-    input, textarea, select {
-      width: 100%;
-      border: 1px solid #414141;
-      background: #222;
-      color: white;
-      border-radius: 12px;
-      padding: 14px 15px;
-      font: inherit;
-      outline: none;
-    }
-    input:focus, textarea:focus, select:focus { border-color: #8c8c8c; }
-    textarea { min-height: 130px; resize: vertical; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-note { color: #989895; font-size: .82rem; margin: 2px 0 0; }
-
-    button {
-      border: 0;
-      cursor: pointer;
-      background: white;
-      color: var(--ink);
-      font: inherit;
-      font-weight: 800;
-      border-radius: 999px;
-      min-height: 48px;
-      padding: 0 20px;
-      justify-self: start;
-    }
-
-    footer {
-      padding: 34px 0 42px;
-      color: #77746f;
-      font-size: .9rem;
-    }
-
-    .footer-row { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-
-    @media (max-width: 860px) {
-      nav a:not(.nav-cta) { display: none; }
-      .hero, .section-head, .project, .about, .contact-shell { grid-template-columns: 1fr; }
-      .hero { padding: 72px 0 64px; gap: 34px; }
-      .price-card { max-width: 420px; }
-      .services { grid-template-columns: 1fr; }
-      .service { min-height: 0; }
-      .number { margin-bottom: 24px; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .step:nth-child(3) { border-left: 0; }
-      .step:nth-child(n+3) { border-top: 1px solid var(--line); }
-      .contact-shell { padding: 38px; gap: 38px; }
-    }
-
-    @media (max-width: 560px) {
-      .wrap { width: min(calc(100% - 28px), var(--max)); }
-      .nav { min-height: 66px; }
-      h1 { font-size: 3.25rem; }
-      section { padding: 68px 0; }
-      .process-grid, .form-row { grid-template-columns: 1fr; }
-      .step + .step { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
-      .contact-shell { padding: 28px; border-radius: 22px; }
-      .browser iframe { height: 400px; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Mozingo UX home">
-        <span class="mark">MU</span>
-        <span>Mozingo UX</span>
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
-        <a class="nav-cta" href="#contact">Start a project</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <div class="wrap hero">
-      <div>
-        <div class="eyebrow">Small-business web design · Eastern North Carolina</div>
-        <h1>Practical websites for small businesses.</h1>
-        <p class="hero-copy">I build clean, professional websites for local businesses, nonprofits, venues, and organizations that need a better presence online — without turning it into a giant agency project.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#contact">Tell me about your project</a>
-          <a class="btn btn-secondary" href="#work">See my work</a>
-        </div>
-      </div>
-
-      <aside class="price-card" aria-label="Starting price">
-        <div class="eyebrow" style="margin-bottom:10px">Simple starting point</div>
-        <strong>From $500</strong>
-        <p>For straightforward small-business sites. I’ll give you a clear scope and price before anything starts.</p>
-      </aside>
-    </div>
-
-    <section id="services">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">What I can help with</div>
-          <div>
-            <h2>Most small businesses need something simple that works.</h2>
-            <p>A site should make your business look credible, explain what you do, work well on a phone, and make it obvious how to contact you. That’s the job.</p>
-          </div>
-        </div>
-
-        <div class="services">
-          <article class="service">
-            <span class="number">01</span>
-            <h3>New Website</h3>
-            <p>Need something professional online? I can build a straightforward website around your business and what customers need to know.</p>
-          </article>
-          <article class="service">
-            <span class="number">02</span>
-            <h3>Website Redesign</h3>
-            <p>Already have a website, but it looks old or confusing? I can rebuild it into something cleaner and easier to use.</p>
-          </article>
-          <article class="service">
-            <span class="number">03</span>
-            <h3>Setup & Help</h3>
-            <p>Domains, hosting, contact forms, launch help, updates, and the technical details that come with getting a website online.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="work">
-      <div class="wrap project">
-        <div class="project-copy">
-          <div class="eyebrow">Featured project</div>
-          <h2>Central Heating & Air Conditioning</h2>
-          <p>A cleaner, more professional site for an established Eastern North Carolina HVAC and mechanical contractor. The goal was simple: make the company easy to understand and easy to contact.</p>
-          <div class="project-meta">
-            <div><span>Project</span><strong>Website redesign</strong></div>
-            <div><span>Focus</span><strong>Credibility, services, contact</strong></div>
-            <div><span>Website</span><strong>central-hac.com</strong></div>
-          </div>
-          <a class="btn btn-primary" href="https://central-hac.com" target="_blank" rel="noreferrer">Open live site ↗</a>
-        </div>
-
-        <div class="browser" aria-label="Live preview of Central Heating and Air Conditioning website">
-          <div class="browser-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-          <iframe src="https://central-hac.com" title="Central Heating and Air Conditioning live website preview" loading="lazy"></iframe>
-          <div class="browser-fallback">Preview unavailable. <a href="https://central-hac.com" target="_blank" rel="noreferrer">Open the live site instead.</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="process">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">How it works</div>
-          <div>
-            <h2>From “we need a website” to live without making it complicated.</h2>
-          </div>
-        </div>
-
-        <div class="process-grid">
-          <article class="step">
-            <small>01</small>
-            <h3>Tell me what you need.</h3>
-            <p>Send me your current site, if you have one, and a little about what you want to improve.</p>
-          </article>
-          <article class="step">
-            <small>02</small>
-            <h3>I’ll give you a plan and price.</h3>
-            <p>We agree on what I’m building and what it costs before I start.</p>
-          </article>
-          <article class="step">
-            <small>03</small>
-            <h3>I build it.</h3>
-            <p>You get a working version to review, then we make the changes it needs.</p>
-          </article>
-          <article class="step">
-            <small>04</small>
-            <h3>We put it online.</h3>
-            <p>I handle the launch details and make sure the important stuff works.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap about">
-        <div class="eyebrow">About</div>
-        <div>
-          <h2>Hi, I’m Austin.</h2>
-          <p>I’m based in Eastern North Carolina and run Mozingo UX as a small independent web studio. My background is in IT, business operations, and web design, so I focus on websites that are practical for the businesses using them — not just nice to look at.</p>
-          <a class="btn btn-secondary" href="#contact">Tell me what you need</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="wrap">
-        <div class="contact-shell">
-          <div>
-            <div class="eyebrow" style="color:#b8d5c9">Start a project</div>
-            <h2>Need a better website?</h2>
-            <p>Send me a quick note about your business and what you need. If I can help, I’ll tell you what a realistic next step looks like.</p>
-            <p>Email: <a class="email" href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a></p>
-          </div>
-
-          <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="New Mozingo UX project inquiry" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <div class="form-row">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" name="name" autocomplete="name" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
-              </div>
-            </div>
-
-            <div>
-              <label for="business">Business / current website</label>
-              <input id="business" name="business_or_website" placeholder="Business name or website, if you have one" />
-            </div>
-
-            <div>
-              <label for="help">What kind of help do you need?</label>
-              <select id="help" name="project_type" required>
-                <option value="" selected disabled>Choose one</option>
-                <option>New website</option>
-                <option>Website redesign</option>
-                <option>Setup / cleanup / updates</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="details">Project details</label>
-              <textarea id="details" name="message" required placeholder="A few sentences is plenty."></textarea>
-            </div>
-
-            <p class="form-note">This form sends your message to Mozingo UX by email.</p>
-            <button type="submit">Send project inquiry</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-row">
-      <span>© <span id="year"></span> Mozingo UX. Practical websites for small businesses.</span>
-      <a href="mailto:mozingoux@gmail.com">mozingoux@gmail.com</a>
-    </div>
-  </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+<link rel="canonical" href="https://mozingoux.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="alternate icon" href="/favicon.ico">
+<meta property="og:type" content="website"><meta property="og:site_name" content="MozingoUX">
+<meta property="og:title" content="Web Design for Eastern NC Businesses | MozingoUX"><meta property="og:description" content="Simple, professional websites for Eastern North Carolina small businesses. Straightforward sites start at $500. Explore Austin Mozingo’s work and get in touch."><meta property="og:url" content="https://mozingoux.com/">
+<meta property="og:image" content="https://mozingoux.com/assets/images/social-preview.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MozingoUX — Simple websites for Eastern NC businesses">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Web Design for Eastern NC Businesses | MozingoUX"><meta name="twitter:description" content="Simple, professional websites for Eastern North Carolina small businesses. Straightforward sites start at $500. Explore Austin Mozingo’s work and get in touch."><meta name="twitter:image" content="https://mozingoux.com/assets/images/social-preview.jpg">
+<link rel="stylesheet" href="/assets/site.css"><script src="/assets/site.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"MozingoUX","alternateName":"Mozingo UX","url":"https://mozingoux.com/","description":"Independent web design for small businesses in Eastern North Carolina.","email":"mozingoux@gmail.com","areaServed":{"@type":"Place","name":"Eastern North Carolina"},"founder":{"@type":"Person","name":"Austin Mozingo"}}</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap header-inner">
+  <a class="brand" href="/" aria-label="MozingoUX home"><span class="brand-mark" aria-hidden="true">MU</span>Mozingo<span class="brand-accent">UX</span></a>
+  <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
+  <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+    <a href="/work/">Work</a>
+    <a href="/#services">Services</a>
+    <a href="/about/">About</a>
+    <a class="nav-contact" href="/#contact">Contact <span aria-hidden="true">↗</span></a>
+  </nav>
+</div></header>
+<main id="main">
+<section class="hero wrap" aria-labelledby="home-title">
+ <p class="eyebrow">Independent web design · Eastern North Carolina</p>
+ <h1 id="home-title">Simple, professional websites<br class="desktop-break"> for <span>Eastern NC businesses.</span></h1>
+ <p class="hero-copy">I help small businesses look professional online and make it easy for customers to get in touch.</p>
+ <div class="actions"><a class="button button-primary" href="/work/">View my work <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="/#contact">Start a project <span aria-hidden="true">↗</span></a></div>
+ <p class="price-note"><strong>Straightforward websites start at $500.</strong> Custom and interactive projects are quoted separately.</p>
+</section>
+<section id="work" class="selected-work section wrap">
+ <div class="section-heading"><div><p class="eyebrow">Selected work</p><h2>A clear idea.<br>A website to match.</h2></div><a class="text-link" href="/work/">View the full portfolio <span aria-hidden="true">↗</span></a></div>
+ <div class="project-grid home-projects"><article class="project" data-category="business">
+ <a class="project-image" href="https://central-hac.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Central Heating &amp; Air Conditioning website (opens in a new tab)"><img src="/assets/projects/central-hac.webp" alt="Screenshot of Central Heating &amp; Air Conditioning website" width="1200" height="675" loading="eager" decoding="async"></a>
+ <div class="project-meta"><span>HVAC &amp; mechanical contracting</span><span class="project-kind">Live project</span></div>
+ <h3>Central Heating &amp; Air Conditioning</h3><p>Clear services, company information, and an easy next step for an Eastern NC mechanical contractor.</p>
+ <a class="text-link project-link" href="https://central-hac.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Central Heating &amp; Air Conditioning website (opens in a new tab)">Visit website <span aria-hidden="true">↗</span></a>
+</article>
+<article class="project" data-category="business">
+ <a class="project-image" href="https://zeyz.github.io/mozingoux-juniper-table/" target="_blank" rel="noopener noreferrer" aria-label="View Juniper Table website (opens in a new tab)"><img src="/assets/projects/juniper-table.webp" alt="Screenshot of Juniper Table website" width="1200" height="833" loading="eager" decoding="async"></a>
+ <div class="project-meta"><span>Café &amp; hospitality</span><span class="project-kind">Concept</span></div>
+ <h3>Juniper Table</h3><p>An inviting café website built around a seasonal menu, location, and everyday details.</p>
+ <a class="text-link project-link" href="https://zeyz.github.io/mozingoux-juniper-table/" target="_blank" rel="noopener noreferrer" aria-label="View Juniper Table website (opens in a new tab)">View demo <span aria-hidden="true">↗</span></a>
+</article>
+<article class="project" data-category="business">
+ <a class="project-image" href="https://zeyz.github.io/mozingoux-bloom-and-bramble/" target="_blank" rel="noopener noreferrer" aria-label="View Bloom &amp; Bramble website (opens in a new tab)"><img src="/assets/projects/bloom-and-bramble.webp" alt="Screenshot of Bloom &amp; Bramble website" width="1200" height="833" loading="eager" decoding="async"></a>
+ <div class="project-meta"><span>Florist</span><span class="project-kind">Concept</span></div>
+ <h3>Bloom &amp; Bramble</h3><p>A seasonal flower shop with thoughtful arrangements and occasion recommendations.</p>
+ <a class="text-link project-link" href="https://zeyz.github.io/mozingoux-bloom-and-bramble/" target="_blank" rel="noopener noreferrer" aria-label="View Bloom &amp; Bramble website (opens in a new tab)">View demo <span aria-hidden="true">↗</span></a>
+</article></div>
+</section>
+<section id="services" class="services section"><div class="wrap services-layout"><div><p class="eyebrow">Services</p><h2>The essentials,<br>done thoughtfully.</h2></div><div class="service-list">
+ <article><h3>New websites</h3><p>A clear, mobile-friendly home for your services, business information, and contact details.</p></article>
+ <article><h3>Website redesigns</h3><p>Keep what works. Make the rest clearer, more useful, and easier to navigate.</p></article>
+ <article><h3>Launch &amp; ongoing help</h3><p>Help with domains, hosting, contact forms, updates, and the details of getting online.</p></article>
+</div></div></section>
+<section id="process" class="process section wrap"><div class="section-heading"><div><p class="eyebrow">A simple process</p><h2>From a conversation<br>to a working website.</h2></div></div><ol class="process-list">
+ <li><span class="step-number">01</span><div><h3>Tell me about your business.</h3><p>Share what you do, who your customers are, and what you need.</p></div></li>
+ <li><span class="step-number">02</span><div><h3>Agree on a plan and price.</h3><p>We’ll settle the scope and cost before the work begins.</p></div></li>
+ <li><span class="step-number">03</span><div><h3>Review it. Then go live.</h3><p>I build the site, we review it together, and I help with the launch.</p></div></li>
+</ol></section>
+<section id="contact" class="contact-section section"><div class="wrap">
+ <div class="contact-heading"><div><p class="eyebrow">Start a project</p><h2>Let’s talk about<br>your website.</h2></div>
+ <div class="contact-copy"><p>Tell me a little about your business and what you have in mind. A few sentences is plenty.</p><a class="email-link" href="mailto:mozingoux@gmail.com?subject=Website%20project%20inquiry">mozingoux@gmail.com <span aria-hidden="true">↗</span></a></div></div>
+ <details class="contact-form"><summary>Prefer a form? Send a project inquiry <span aria-hidden="true">+</span></summary>
+ <form action="https://formsubmit.co/mozingoux@gmail.com" method="POST" aria-label="Project inquiry">
+  <input type="hidden" name="_subject" value="New Mozingo UX project inquiry">
+  <input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://mozingoux.com/thanks/">
+  <div class="honeypot" aria-hidden="true"><label for="company-check">Leave this field empty</label><input id="company-check" name="_honey" tabindex="-1" autocomplete="off"></div>
+  <div class="form-row"><div><label for="name">Name <span>(required)</span></label><input id="name" name="name" autocomplete="name" required maxlength="100"></div><div><label for="email">Email <span>(required)</span></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254"></div></div>
+  <div class="form-row"><div><label for="business">Business or current website <span>(optional)</span></label><input id="business" name="business_or_website" maxlength="300"></div><div><label for="help">What do you need?</label><select id="help" name="project_type"><option>New website</option><option>Website redesign</option><option>Setup or updates</option><option>Not sure yet</option></select></div></div>
+  <div><label for="details">A little about your project <span>(required)</span></label><textarea id="details" name="message" required maxlength="5000" rows="4" placeholder="What does your business do, and what would you like your website to do?"></textarea></div>
+  <div class="form-bottom"><p>This form sends your details to my email through FormSubmit. You can also email me directly.</p><button class="button button-light" type="submit">Send project inquiry <span aria-hidden="true">↗</span></button></div>
+ </form></details>
+</div></section></main>
+<footer class="site-footer"><div class="wrap footer-inner"><p>© 2026 MozingoUX <span>Independent web design · Eastern North Carolina</span></p><div><a href="/work/">Work</a><a href="/about/">About</a><a href="mailto:mozingoux@gmail.com">Email Austin <span aria-hidden="true">↗</span></a></div></div></footer>
+</body></html>
